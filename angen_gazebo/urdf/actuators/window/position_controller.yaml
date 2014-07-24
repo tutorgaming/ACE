@@ -1,0 +1,8 @@
+window:
+  type: robot_mechanism_controllers/JointPositionController
+  joint: workroom_window_joint
+  pid:
+    p: 20
+    i: 0.1
+    d: 1
+    i_clamp: 1

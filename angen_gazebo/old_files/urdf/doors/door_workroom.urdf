@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<robot name="door_workroom">
+  <link name="world"/>
+  <joint name="link_joint_workroom" type="revolute">
+    <axis xyz="0 0 -1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 1.57" xyz="3.73 7.1 0"/>
+    <limit effort="100.0" lower="0" upper="3.14" velocity="5"/>
+    <child link="link_workroom"/>
+  </joint>
+  <link name="link_workroom">
+    <inertial>
+      <mass value="20"/>
+      <origin xyz="0 0 0.06"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.5 0.03 1.06"/>
+      <geometry>
+        <box size="1 0.06 2"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0 0 0"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="link_workroom">
+    <material>Gazebo/RustySteel</material>
+    <laserRetro>2000</laserRetro>
+    <dampingFactor>0.005</dampingFactor>
+    <selfCollide>false</selfCollide>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+</robot>

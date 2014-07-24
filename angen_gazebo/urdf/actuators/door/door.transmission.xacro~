@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<robot name="${room_name}_door">
+    <property name="room_name" value="entrance" />
+    <transmission type="pr2_mechanism_model/SimpleTransmission" name="${room_name}_door_trans">
+        <actuator name="${room_name}_door_motor" />
+        <joint name="${room_name}_door_joint" />
+        <mechanicalReduction>1</mechanicalReduction>
+        <motorTorqueConstant>1</motorTorqueConstant>
+    </transmission>
+</robot>

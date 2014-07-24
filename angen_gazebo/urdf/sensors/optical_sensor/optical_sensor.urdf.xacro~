@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+<robot name="${room_name}_optical_sensor" xmlns:xacro="http://ros.org/wiki/xacro" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:gazebo="http://playerstage.sourceforge.net/gazebo/xmlschema/#gz" xmlns:model="http://playerstage.sourceforge.net/gazebo/xmlschema/#model" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:body="http://playerstage.sourceforge.net/gazebo/xmlschema/#body" xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom" xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#joint" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" xmlns:rendering="http://playerstage.sourceforge.net/gazebo/xmlschema/#rendering" xmlns:renderable="http://playerstage.sourceforge.net/gazebo/xmlschema/#renderable" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:physics="http://playerstage.sourceforge.net/gazebo/xmlschema/#physics">
+    <property name="room_name" value="entrance" />
+    <property name="x_position" value="4.875" />
+    <property name="y_position" value="8.285" />
+    <property name="z_position" value="2.265" />
+    <property name="x_world_offset" value="-5" />
+    <property name="y_world_offset" value="-5" />
+    <property name="yaw" value="0" />
+    <property name="roll" value="0" />
+    <property name="pitch" value="0" />
+    <link name="world" />
+    <joint name="sensor_joint" type="fixed">
+        <origin xyz="${x_position + x_world_offset} ${y_position + y_world_offset} ${z_position}" rpy="${roll} ${pitch} ${yaw}" />
+        <parent link="world" />
+        <child link="LED" />
+    </joint>
+    <joint name="LED_PhotoDiode" type="fixed">
+        <origin xyz="0.05 0 0" rpy="0 0 0" />
+        <parent link="LED" />
+        <child link="PhotoDiode" />
+    </joint>
+    <link name="LED">
+        <inertial>
+            <mass value="0.1" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.005 0.03 0.03" />
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0 0 0" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="LED">
+        <sensor:ray name="LED">
+            <resRange>0.1</resRange>
+            <rayCount>2</rayCount>
+            <rangeCount>2</rangeCount>
+            <laserCount>1</laserCount>
+            <origin>0.0 0.0 0.0</origin>
+            <displayRays>true</displayRays>
+            <minAngle>-0.0</minAngle>
+            <maxAngle>0.0</maxAngle>
+            <minRange>0.000001</minRange>
+            <maxRange>0.5</maxRange>
+            <updateRate>1.0</updateRate>
+            <horizontalRayCount>2</horizontalRayCount>
+            <horizontalRangeCount>2</horizontalRangeCount>
+            <horizontalMinAngle>-0.0</horizontalMinAngle>
+            <horizontalMaxAngle>0.0</horizontalMaxAngle>
+            <controller:gazebo_ros_laser name="${room_name}_OpticalSensor_controller" plugin="libgazebo_ros_laser.so">
+                <gaussianNoise>0.0</gaussianNoise>
+                <alwaysOn>true</alwaysOn>
+                <updateRate>1.0</updateRate>
+                <topicName>${room_name}_ray_range</topicName>
+                <frameName>${room_name}_opticalsensor</frameName>
+                <robotNamespace>optical_sensor</robotNamespace>
+                <interface:laser name="${room_name}_OpticalSensor_iface" />
+            </controller:gazebo_ros_laser>
+        </sensor:ray>
+        <material>Gazebo/Blue</material>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <link name="PhotoDiode">
+        <inertial>
+            <mass value="0.1" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.005 0.03 0.03" />
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.005 0.03 0.03" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="PhotoDiode">
+        <material>Gazebo/Blue</material>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+</robot>

@@ -1,0 +1,18 @@
+
+
+
+  <param name="robot_description"
+    command="$(find xacro)/xacro.py $(find turtlebot_description)/urdf/turtlebot.urdf.xacro" />
+
+ 
+    <param name="tf_prefix" value="robot1_tf" />
+    <include file="$(find angen_turtlebot)/launch/final_r1.launch" >
+      <arg name="init_pose" value="-x 9 -y 5 -z 0.05" />
+      <arg name="robot_name"  value="Robot1" />
+    <param name="amcl/initial_pose_x" value="9" />
+    <param name="amcl/initial_pose_y" value="5" />
+    </include>
+
+
+
+</launch>

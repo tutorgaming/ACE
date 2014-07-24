@@ -1,0 +1,8 @@
+<?xml version ='1.0'?>
+<launch>
+ 
+ <include file="$(find angen_gazebo)/launch/components/elevator.launch" >
+      <arg name="init_pose" value="-x -1.4 -y 11.5 -z 0" />
+</include>
+  
+</launch>

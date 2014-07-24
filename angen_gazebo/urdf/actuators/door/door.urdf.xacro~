@@ -1,0 +1,258 @@
+<?xml version="1.0" ?>
+<robot name="${room_name}_door" xmlns:xacro="http://ros.org/wiki/xacro" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:gazebo="http://playerstage.sourceforge.net/gazebo/xmlschema/#gz" xmlns:model="http://playerstage.sourceforge.net/gazebo/xmlschema/#model" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:body="http://playerstage.sourceforge.net/gazebo/xmlschema/#body" xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom" xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#joint" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" xmlns:rendering="http://playerstage.sourceforge.net/gazebo/xmlschema/#rendering" xmlns:renderable="http://playerstage.sourceforge.net/gazebo/xmlschema/#renderable" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:physics="http://playerstage.sourceforge.net/gazebo/xmlschema/#physics">
+    <property name="room_name" value="entrance_f1" />
+    <property name="x_position" value="4.4" />
+    <property name="y_position" value="8.25" />
+    <property name="z_position" value="3.56" />
+    <property name="x_world_offset" value="-5" />
+    <property name="y_world_offset" value="-5" />
+    <property name="lower_limit" value="-1.57" />
+    <property name="orientation" value="0" />
+    
+    <joint name="${room_name}_door_joint" type="revolute">
+        <axis xyz="0 0 1" />
+        <parent link="world" />
+        <child link="${room_name}_door_block" />
+        <origin rpy="0 0 ${orientation}" xyz="${x_position + x_world_offset} ${y_position + y_world_offset} ${z_position}" />
+        <limit effort="100.0" lower="${lower_limit}" upper="0.001" velocity="5" />
+    </joint>
+    <joint name="doorblock_door" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="${room_name}_door_block" />
+        <child link="${room_name}_door" />
+        <origin rpy="0 0 0" xyz="0 0 0" />
+    </joint>
+    <joint name="door_strip" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="${room_name}_door" />
+        <child link="optical_switch_strip" />
+        <origin rpy="0 0 0" xyz="0.5 0 2.19" />
+    </joint>
+    <!--<joint name="door_tophinge" type="fixed">
+    <axis xyz="0 1 0"/>
+    <parent link="door"/>
+    <child link="hinge_top"/>
+    <origin rpy="0 0 0" xyz="-0.008 0.022 1.5"/>
+  </joint> 
+  
+  <joint name="door_bottomhinge" type="fixed">
+    <axis xyz="0 1 0"/>
+    <parent link="door"/>
+    <child link="hinge_bottom"/>
+    <origin rpy="0 0 0" xyz="-0.008 0.022 .5"/>
+  </joint>-->
+    <joint name="door_doorhandelfront" type="fixed">
+        <axis xyz="0 1 0" />
+        <parent link="${room_name}_door" />
+        <child link="door_handel_front" />
+        <origin rpy="3.14 3.14 0" xyz="1.0 -0.002 1" />
+    </joint>
+    <joint name="door_doorhandelback" type="fixed">
+        <axis xyz="0 1 0" />
+        <parent link="${room_name}_door" />
+        <child link="door_handel_back" />
+        <origin rpy="0 3.14 0" xyz="1.0 -0.04 1.075" />
+    </joint>
+    <link name="world" />
+    <link name="${room_name}_door_block">
+        <inertial>
+            <mass value="1" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3" />
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0 0 0" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0 0 0" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="${room_name}_door_block">
+        <material>angen_gazebo/DoorWood</material>
+        <laserRetro>2000</laserRetro>
+        <dampingFactor>0.006</dampingFactor>
+        <selfCollide>false</selfCollide>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <link name="${room_name}_door">
+        <inertial>
+            <mass value="20" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3" />
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0.5 0 1.095" />
+            <geometry>
+                <box size="1 0.06 2.19" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0.5 0 1.095" />
+            <geometry>
+                <box size="1 0.06 2.19" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="${room_name}_door">
+        <material>angen_gazebo/DoorWood</material>
+        <laserRetro>2000</laserRetro>
+        <dampingFactor>0.006</dampingFactor>
+        <selfCollide>false</selfCollide>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <link name="optical_switch_strip">
+        <inertial>
+            <mass value="0.0001" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3" />
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0.02" />
+            <geometry>
+                <box size="0.005 0.06 0.04" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0.02" />
+            <geometry>
+                <box size="0.005 0.06 0.04" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="optical_switch_strip">
+        <material>Gazebo/Green</material>
+        <laserRetro>2000</laserRetro>
+        <dampingFactor>0.006</dampingFactor>
+        <selfCollide>false</selfCollide>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <!--<link name="hinge_top">
+    <inertial>
+      <mass value=".25"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 -0.008 0"/>
+      <geometry>
+        <cylinder radius=".008" length=".08"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 -0.008 0"/>
+      <geometry>
+        <cylinder radius="0" length="0"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="hinge_top">
+    <material>angen_gazebo/DoorMetal</material>
+    <laserRetro>2000</laserRetro>
+    <dampingFactor>0.006</dampingFactor>
+    <selfCollide>false</selfCollide>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="hinge_bottom">
+    <inertial>
+      <mass value=".25"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 -0.008 0"/>
+      <geometry>
+        <cylinder radius=".008" length=".08"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 -0.008 0"/>
+      <geometry>
+        <cylinder radius="0" length="0"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="hinge_bottom">
+    <material>angen_gazebo/DoorMetal</material>
+    <laserRetro>2000</laserRetro>
+    <dampingFactor>0.006</dampingFactor>
+    <selfCollide>false</selfCollide>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>-->
+    <link name="door_handel_front">
+        <inertial>
+            <mass value=".25" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3" />
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 -0.02 0" />
+            <geometry>
+                <mesh filename="door_handel.stl" size="0.16 0.04 0.1" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 -0.02 0" />
+            <geometry>
+                <mesh filename="door_handel.stl" size="0.16 0.04 0.1" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="door_handel_front">
+        <material>angen_gazebo/DoorMetal</material>
+        <laserRetro>2000</laserRetro>
+        <dampingFactor>0.006</dampingFactor>
+        <selfCollide>false</selfCollide>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <link name="door_handel_back">
+        <inertial>
+            <mass value=".25" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3" />
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0.02 0" />
+            <geometry>
+                <mesh filename="door_handel.stl" size="0.16 0.04 0.1" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0.02 0" />
+            <geometry>
+                <mesh filename="door_handel.stl" size="0.16 0.04 0.1" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="door_handel_back">
+        <material>angen_gazebo/DoorMetal</material>
+        <laserRetro>2000</laserRetro>
+        <dampingFactor>0.006</dampingFactor>
+        <selfCollide>false</selfCollide>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <gazebo>
+        <controller:gazebo_ros_p3d name="p3d_door_controller" plugin="libgazebo_ros_p3d.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>100.0</updateRate>
+            <bodyName>${room_name}_door_block</bodyName>
+            <topicName>${room_name}_door_pose</topicName>
+            <serviceName>${room_name}_door_pose_service</serviceName>
+            <frameName>map</frameName>
+            <robotNamespace>door</robotNamespace>
+            <interface:position name="p3d_door_position" />
+        </controller:gazebo_ros_p3d>
+        <transmission type="pr2_mechanism_model/SimpleTransmission" name="${room_name}_door_trans">
+            <actuator name="${room_name}_door_motor" />
+            <joint name="${room_name}_door_joint" />
+            <mechanicalReduction>1</mechanicalReduction>
+            <motorTorqueConstant>1</motorTorqueConstant>
+        </transmission>
+    </gazebo>
+</robot>

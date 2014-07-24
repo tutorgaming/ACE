@@ -1,0 +1,23 @@
+robot name="iw_11">
+  <link name="iw_11">
+     <inertial>
+      <origin xyz="5.75 2.8 0" rpy="0 0 0" /> 
+      <mass value="10.0" />
+      <inertia  ixx="1.0" ixy="0.0"  ixz="0.0"  iyy="100.0"  iyz="0.0"  izz="1.0" />
+    </inertial>
+    <visual>
+      <origin xyz="5.75 2.8 0" rpy="0 0 0" /> 
+      <geometry>
+        <box size="0.7 0.2 0" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="5.75 2.8 0" rpy="0 0 0" />
+      <geometry>
+       <box size="0.7 0.2 0" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="iw_11">
+    <material>Gazebo/White</material>
+</robot>

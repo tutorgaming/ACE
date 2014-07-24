@@ -1,0 +1,13 @@
+<?xml version ='1.0'?>
+
+<launch>	
+
+    <param name="elevator_description" command="$(find xacro)/xacro.py '$(find angen_gazebo)/urdf/actuators/elevator/elevator.urdf.xacro'"/>
+    
+    <arg name="init_pose"/>   
+    <node name="spawn_elevator" pkg="gazebo" type="spawn_model" args="$(arg init_pose) -urdf -param elevator_description -model elevator" respawn="false" output="screen"/>
+    
+    <rosparam file="$(find angen_gazebo)/urdf/actuators/elevator/position_controller.yaml" command="load"/>
+
+</launch>	
+	

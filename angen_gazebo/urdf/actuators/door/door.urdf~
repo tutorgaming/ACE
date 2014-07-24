@@ -1,0 +1,184 @@
+<?xml version="1.0" ?>
+<property name="room_name1" value="workroom" />
+<robot name="${room_name1}_door"> 
+  <property name="room_name" value="workroom" />
+  <property name="x_position" value="3.73" />
+  <property name="y_position" value="7.1" />
+  <property name="x_world_offset" value="-5" />
+  <property name="y_world_offset" value="-5" />
+  <property name="lower_limit" value="-3.14" />
+  
+  <joint name="${room_name}_door_joint" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <child link="door"/>
+    <origin rpy="0 0 1.57" xyz="${x_position + x_world_offset + -0.5} ${y_position + y_world_offset + 0} 0"/>
+    <limit effort="100.0" lower="-3.14" upper="0" velocity="5"/>    
+  </joint>
+  
+  <joint name="door_tophinge" type="fixed">
+    <axis xyz="0 1 0"/>
+    <parent link="door"/>
+    <child link="hinge_top"/>
+    <origin rpy="0 0 0" xyz="${x_position + x_world_offset -0.008} -0.022 1.5"/>
+  </joint> 
+  
+  <joint name="door_bottomhinge" type="fixed">
+    <axis xyz="0 1 0"/>
+    <parent link="door"/>
+    <child link="hinge_bottom"/>
+    <origin rpy="0 0 0" xyz="${x_position + x_world_offset -0.008} -0.022 .5"/>
+  </joint> 
+  
+  <joint name="door_doorhandelfront" type="fixed">
+    <axis xyz="0 1 0"/>
+    <parent link="door"/>
+    <child link="door_handel_front"/>
+    <origin rpy="3.14 3.14 0" xyz="${x_position + x_world_offset + 1.0 -0.002 1"/>
+  </joint> 
+  
+  <joint name="door_doorhandelback" type="fixed">
+    <axis xyz="0 1 0"/>
+    <parent link="door"/>
+    <child link="door_handel_back"/>
+    <origin rpy="0 3.14 0" xyz="1.0 -0.04 1.075"/>
+  </joint>
+ 
+   <link name="world"/>
+  
+  <link name="door">
+    <inertial>
+      <mass value="20"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.5 0 1"/>
+      <geometry>
+        <box size="1 0.06 2"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.5 0 1"/>
+      <geometry>
+        <box size="1 0.06 2"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="door">
+    <material>angen_gazebo/DoorWood</material>
+    <laserRetro>2000</laserRetro>
+    <dampingFactor>0.006</dampingFactor>
+    <selfCollide>false</selfCollide>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="hinge_top">
+    <inertial>
+      <mass value=".25"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 -0.008 0"/>
+      <geometry>
+        <cylinder radius=".008" length=".08"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 -0.008 0"/>
+      <geometry>
+        <cylinder radius="0" length="0"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="hinge_top">
+    <material>angen_gazebo/DoorMetal</material>
+    <laserRetro>2000</laserRetro>
+    <dampingFactor>0.006</dampingFactor>
+    <selfCollide>false</selfCollide>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="hinge_bottom">
+    <inertial>
+      <mass value=".25"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 -0.008 0"/>
+      <geometry>
+        <cylinder radius=".008" length=".08"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 -0.008 0"/>
+      <geometry>
+        <cylinder radius="0" length="0"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="hinge_bottom">
+    <material>angen_gazebo/DoorMetal</material>
+    <laserRetro>2000</laserRetro>
+    <dampingFactor>0.006</dampingFactor>
+    <selfCollide>false</selfCollide>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="door_handel_front">
+    <inertial>
+      <mass value=".25"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 -0.02 0"/>
+      <geometry>
+        <mesh filename="door_handel.stl" size="0.16 0.04 0.1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 -0.02 0"/>
+      <geometry>
+        <mesh filename="door_handel.stl" size="0.16 0.04 0.1"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="door_handel_front">
+    <material>angen_gazebo/DoorMetal</material>
+    <laserRetro>2000</laserRetro>
+    <dampingFactor>0.006</dampingFactor>
+    <selfCollide>false</selfCollide>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="door_handel_back">
+    <inertial>
+      <mass value=".25"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0.02 0"/>
+      <geometry>
+        <mesh filename="door_handel.stl" size="0.16 0.04 0.1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0.02 0"/>
+      <geometry>
+        <mesh filename="door_handel.stl" size="0.16 0.04 0.1"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="door_handel_back">
+    <material>angen_gazebo/DoorMetal</material>
+    <laserRetro>2000</laserRetro>
+    <dampingFactor>0.006</dampingFactor>
+    <selfCollide>false</selfCollide>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+</robot>

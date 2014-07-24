@@ -1,0 +1,20 @@
+#include "ros/ros.h"
+#include "sensor_msgs/LaserScan.h"
+
+void rayCallback(const sensor_msgs::LaserScan::ConstPtr& msg){
+
+	if(msg->ranges[0]>0.023 || msg->ranges[1]>0.023) {
+		//DO SOMETHING (update door state)
+		ROS_INFO("Open");
+	} else 	ROS_INFO("Closed");
+}
+
+int main(int argc, char **argv) {
+
+	ros::init(argc, argv, "switch_controller");
+	
+	ros::NodeHandle n;
+	ros::Subscriber sub = n.subscribe("/optical_sensor/kitchen_ray_range", 10, rayCallback);
+	ros::spin();
+	return 0;
+}

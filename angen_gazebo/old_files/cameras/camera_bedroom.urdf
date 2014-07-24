@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro"
+       name="camera_bedroom">
+
+<gazebo reference="camera_bedroom"> 
+      <sensor:camera name="camera_bedroom">
+        <imageSize>640 480</imageSize>
+        <imageFormat>R8G8B8</imageFormat>
+        <hfov>90</hfov>
+        <nearClip>0.01</nearClip>
+        <farClip>100</farClip>
+        <updateRate>20.0</updateRate>
+        <controller:gazebo_ros_camera name="camera_bedroom_controller" plugin="libgazebo_ros_camera.so">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>20.0</updateRate>
+          <imageTopicName>angen_cameras/bedroom/image</imageTopicName>
+          <frameName>camera_bedroom</frameName>
+          <interface:camera name="camera_bedroom_iface" />
+        </controller:gazebo_ros_camera>
+      </sensor:camera>
+      <turnGravityOff>true</turnGravityOff>
+      <material>Gazebo/Blue</material>   
+  </gazebo>
+
+<link name="world"/>
+  <joint name="camera_bedroom_pose" type="fixed">
+    <axis xyz="1 0 0"/>
+    <parent link="world"/>
+    <origin rpy="0 0.35 0.785" xyz="0.1 0.4 2.3"/>
+    <child link="camera_bedroom"/>
+    <dynamics damping="100" friction="1000"/>
+  </joint>
+  
+<link name="camera_bedroom">
+     <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <mass value="0.3" />
+      <inertia  ixx="0.3" ixy="0.0"  ixz="0.0"  iyy="0.001"  iyz="0.0"  izz="0.05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <geometry>
+        <box size=".025 .1 .2" />
+      </geometry>
+    </visual>
+    <collision name="camera_bedroom">
+     <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <geometry>
+       <box size=".025 .1 .2" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

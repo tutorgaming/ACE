@@ -1,0 +1,5 @@
+uint8 wait_time
+bool will_shake
+bool is_straight_line
+---
+bool Status

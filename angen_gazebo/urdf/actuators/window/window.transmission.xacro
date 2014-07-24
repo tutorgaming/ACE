@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<robot name="${room_name}_window">
+    <property name="room_name" value="livingroom2_f1" />
+    <transmission type="pr2_mechanism_model/SimpleTransmission" name="${room_name}_window_trans">
+        <actuator name="${room_name}_window_motor" />
+        <joint name="${room_name}_window_joint" />
+        <mechanicalReduction>1</mechanicalReduction>
+        <motorTorqueConstant>1</motorTorqueConstant>
+    </transmission>
+</robot>

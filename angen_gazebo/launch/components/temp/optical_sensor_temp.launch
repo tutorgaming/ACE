@@ -1,0 +1,5 @@
+<?xml version ='1.0'?>
+
+<launch>
+       <param name="optical_sensor_description" command="$(find xacro)/xacro.py '$(find angen_gazebo)/urdf/sensors/optical_sensor/optical_sensor.urdf.xacro'"/>
+</launch>

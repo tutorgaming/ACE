@@ -1,0 +1,98 @@
+<launch>
+  <include file="$(find pr2_machine)/sim.machine"/>
+  <!-- start up empty world -->
+  <include file="$(find gazebo_worlds)/launch/empty_world.launch"/>
+
+  <!-- upload urdf -->
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2.urdf.xacro'" />
+  <!-- upload for each namespace for controller manager plugin -->
+  <param name="pr2_1/robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2.urdf.xacro'" />
+  <param name="pr2_2/robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2.urdf.xacro'" />
+  <param name="pr2_3/robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2.urdf.xacro'" />
+
+  <!-- spawn pr2 robots -->
+  <node name="spawn_pr2_1_urdf" pkg="gazebo" type="spawn_model" args="-urdf -param robot_description -namespace pr2_1 -x 0 -y  1 -model pr2_1" respawn="false" output="screen" />
+  <node name="spawn_pr2_2_urdf" pkg="gazebo" type="spawn_model" args="-urdf -param robot_description -namespace pr2_2 -x 0 -y  0 -model pr2_2" respawn="false" output="screen" />
+  <node name="spawn_pr2_3_urdf" pkg="gazebo" type="spawn_model" args="-urdf -param robot_description -namespace pr2_3 -x 0 -y -1 -model pr2_3" respawn="false" output="screen" />
+
+  <!-- Controller Manager -->
+  <include file="$(find pr2_gazebo_wg)/launch/controller_manager_1.launch" ns="pr2_1" />
+  <include file="$(find pr2_gazebo_wg)/launch/controller_manager_2.launch" ns="pr2_2" />
+  <include file="$(find pr2_gazebo_wg)/launch/controller_manager_3.launch" ns="pr2_3" />
+
+  <!-- start up controllers -->
+  <include file="$(find pr2_controller_configuration_gazebo)/pr2_default_controllers.launch" ns="pr2_1"/>
+  <include file="$(find pr2_controller_configuration_gazebo)/pr2_default_controllers.launch" ns="pr2_2"/>
+  <include file="$(find pr2_controller_configuration_gazebo)/pr2_default_controllers.launch" ns="pr2_3"/>
+
+  <!-- Fake Calibration -->
+  <node pkg="rostopic" type="rostopic" name="fake_joint_calibration" args="pub /calibrated std_msgs/Bool true" />
+
+  <!-- Stereo image processing -->
+  <include file="$(find pr2_gazebo)/config/dualstereo_camera.launch" ns="pr2_1" />
+  <include file="$(find pr2_gazebo)/config/dualstereo_camera.launch" ns="pr2_2" />
+  <include file="$(find pr2_gazebo)/config/dualstereo_camera.launch" ns="pr2_3" />
+
+  <!-- Start image_proc inside camera namespace -->
+  <include file="$(find pr2_gazebo)/config/r_forearm_cam.launch" ns="pr2_1" />
+  <include file="$(find pr2_gazebo)/config/l_forearm_cam.launch" ns="pr2_1" />
+  <include file="$(find pr2_gazebo)/config/r_forearm_cam.launch" ns="pr2_2" />
+  <include file="$(find pr2_gazebo)/config/l_forearm_cam.launch" ns="pr2_2" />
+  <include file="$(find pr2_gazebo)/config/r_forearm_cam.launch" ns="pr2_3" />
+  <include file="$(find pr2_gazebo)/config/l_forearm_cam.launch" ns="pr2_3" />
+
+  <!-- Robot pose ekf -->
+  <node ns="pr2_1" pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf_1" output="screen">
+    <param name="freq" value="30.0"/>
+    <param name="sensor_timeout" value="1.0"/>
+    <param name="publish_tf" value="true"/>
+    <param name="odom_used" value="true"/>
+    <param name="imu_used" value="true"/>
+    <param name="vo_used" value="false"/>
+    <remap from="odom" to="base_odometry/odom" />
+    <remap from="imu_data" to="torso_lift_imu/data" />
+  </node>
+  <node ns="pr2_2" pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf_2" output="screen">
+    <param name="freq" value="30.0"/>
+    <param name="sensor_timeout" value="1.0"/>
+    <param name="publish_tf" value="true"/>
+    <param name="odom_used" value="true"/>
+    <param name="imu_used" value="true"/>
+    <param name="vo_used" value="false"/>
+    <remap from="odom" to="base_odometry/odom" />
+    <remap from="imu_data" to="torso_lift_imu/data" />
+  </node>
+  <node ns="pr2_3" pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf_3" output="screen">
+    <param name="freq" value="30.0"/>
+    <param name="sensor_timeout" value="1.0"/>
+    <param name="publish_tf" value="true"/>
+    <param name="odom_used" value="true"/>
+    <param name="imu_used" value="true"/>
+    <param name="vo_used" value="false"/>
+    <remap from="odom" to="base_odometry/odom" />
+    <remap from="imu_data" to="torso_lift_imu/data" />
+  </node>
+
+  <!-- Buffer Server -->
+  <node pkg="tf2_ros" type="buffer_server" name="tf2_buffer_server" output="screen">
+    <param name="buffer_size" value="120.0"/>
+  </node>
+
+  <!-- Spawns the synchronizer -->
+  <node type="camera_synchronizer" name="camera_synchronizer_node" pkg="gazebo_plugins" output="screen" />
+
+  <!-- diagnostics aggregator -->
+  <node pkg="diagnostic_aggregator" type="aggregator_node" name="diag_agg_1" args="Robot" ns="pr2_1" />
+  <rosparam command="load" file="$(find pr2_gazebo)/config/pr2_analyzers_simple.yaml" ns="/pr2_1/diag_agg_1" />
+  <node pkg="pr2_dashboard_aggregator" type="dashboard_aggregator.py" name="pr2_dashboard_aggregator_1" ns="pr2_1" />
+
+  <node pkg="diagnostic_aggregator" type="aggregator_node" name="diag_agg_2" args="Robot" ns="pr2_2" />
+  <rosparam command="load" file="$(find pr2_gazebo)/config/pr2_analyzers_simple.yaml" ns="/pr2_2/diag_agg_2" />
+  <node pkg="pr2_dashboard_aggregator" type="dashboard_aggregator.py" name="pr2_dashboard_aggregator_2" ns="pr2_2" />
+
+  <node pkg="diagnostic_aggregator" type="aggregator_node" name="diag_agg_3" args="Robot" ns="pr2_3" />
+  <rosparam command="load" file="$(find pr2_gazebo)/config/pr2_analyzers_simple.yaml" ns="/pr2_3/diag_agg_3" />
+  <node pkg="pr2_dashboard_aggregator" type="dashboard_aggregator.py" name="pr2_dashboard_aggregator_3" ns="pr2_3" />
+
+</launch>
+

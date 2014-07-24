@@ -1,0 +1,376 @@
+<?xml version="1.0" ?>
+
+<robot name="window_livingroom">
+  
+  <gazebo reference="wbase_livingroom">
+    <material>Gazebo/GrassFloor</material>
+  </gazebo>
+
+  <link name="world"/>
+
+  <joint name="wlink_joint_livingroom1" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="10.765 5.575 1.5"/>
+    <limit effort="1000.0" lower="-0" upper="1.57" velocity="0.5"/>
+    <child link="wlink_livingroom1"/>
+    <dynamics damping="10" friction="1000"/>
+  </joint>
+  
+  <joint name="wlink_joint_livingroom2" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="10.765 5.375 1.5"/>
+    <limit effort="1000.0" lower="-0" upper="1.57" velocity="0.5"/>
+    <child link="wlink_livingroom2"/>
+    <dynamics damping="10" friction="1000"/>
+  </joint>
+  
+  <joint name="wlink_joint_livingroom3" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="10.765 5.175 1.5"/>
+    <limit effort="1000.0" lower="-0" upper="1.57" velocity="0.5"/>
+    <child link="wlink_livingroom3"/>
+    <dynamics damping="10" friction="1000"/>
+  </joint>
+  
+  <joint name="wlink_joint_livingroom4" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="10.765 4.975 1.5"/>
+    <limit effort="1000.0" lower="-0" upper="1.57" velocity="0.5"/>
+    <child link="wlink_livingroom4"/>
+    <dynamics damping="10" friction="1000"/>
+  </joint>
+  
+  <joint name="wlink_joint_livingroom5" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="10.765 4.775 1.5"/>
+    <limit effort="1000.0" lower="-0" upper="1.57" velocity="0.5"/>
+    <child link="wlink_livingroom5"/>
+    <dynamics damping="10" friction="1000"/>
+  </joint>
+  
+  <joint name="wlink_joint_livingroom6" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="10.765 4.575 1.5"/>
+    <limit effort="1000.0" lower="-0" upper="1.57" velocity="0.5"/>
+    <child link="wlink_livingroom6"/>
+    <dynamics damping="10" friction="1000"/>
+  </joint>
+  
+  <joint name="wlink_joint_livingroom7" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="10.765 4.375 1.5"/>
+    <limit effort="1000.0" lower="-0" upper="1.57" velocity="0.5"/>
+    <child link="wlink_livingroom7"/>
+    <dynamics damping="10" friction="1000"/>
+  </joint>
+  
+  <joint name="wlink_joint_livingroom8" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="10.765 4.175 1.5"/>
+    <limit effort="1000.0" lower="-0" upper="1.57" velocity="0.5"/>
+    <child link="wlink_livingroom8"/>
+    <dynamics damping="10" friction="1000"/>
+  </joint>
+  
+  <joint name="wlink_joint_livingroom9" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="10.765 3.975 1.5"/>
+    <limit effort="1000.0" lower="-0" upper="1.57" velocity="0.5"/>
+    <child link="wlink_livingroom9"/>
+    <dynamics damping="10" friction="1000"/>
+  </joint>
+  
+  <joint name="wlink_joint_livingroom:" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="10.765 3.775 1.5"/>
+    <limit effort="1000.0" lower="-0" upper="1.57" velocity="0.5"/>
+    <child link="wlink_livingroom:"/>
+    <dynamics damping="10" friction="1000"/>
+  </joint>
+  
+  <joint name="wlink_joint_livingroom;" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="10.765 3.575 1.5"/>
+    <limit effort="1000.0" lower="-0" upper="1.57" velocity="0.5"/>
+    <child link="wlink_livingroom;"/>
+    <dynamics damping="10" friction="1000"/>
+  </joint>
+  
+
+  <link name="wlink_livingroom1">
+    <inertial>
+      <mass value="10"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 1.57" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.15 0.02 1.5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 90" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.15 0.02 1.5"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="wlink_livingroom1">
+    <material>Gazebo/RustySteel</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+  <link name="wlink_livingroom2">
+    <inertial>
+      <mass value="10"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 1.57" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 90" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="wlink_livingroom2">
+    <material>Gazebo/RustySteel</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="wlink_livingroom3">
+    <inertial>
+      <mass value="10"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 1.57" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 90" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="wlink_livingroom3">
+    <material>Gazebo/RustySteel</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="wlink_livingroom4">
+    <inertial>
+      <mass value="10"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 1.57" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 90" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="wlink_livingroom4">
+    <material>Gazebo/RustySteel</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="wlink_livingroom5">
+    <inertial>
+      <mass value="10"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 1.57" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 90" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="wlink_livingroom5">
+    <material>Gazebo/RustySteel</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+  <link name="wlink_livingroom6">
+    <inertial>
+      <mass value="10"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 1.57" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 90" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="wlink_livingroom6">
+    <material>Gazebo/RustySteel</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="wlink_livingroom7">
+    <inertial>
+      <mass value="10"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 1.57" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 90" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="wlink_livingroom7">
+    <material>Gazebo/RustySteel</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="wlink_livingroom8">
+    <inertial>
+      <mass value="10"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 1.57" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 90" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="wlink_livingroom8">
+    <material>Gazebo/RustySteel</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="wlink_livingroom9">
+    <inertial>
+      <mass value="10"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 1.57" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 90" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="wlink_livingroom9">
+    <material>Gazebo/RustySteel</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="wlink_livingroom:">
+    <inertial>
+      <mass value="10"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 1.57" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 90" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="wlink_livingroom:">
+    <material>Gazebo/RustySteel</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="wlink_livingroom;">
+    <inertial>
+      <mass value="10"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 1.57" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 90" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="wlink_livingroom;">
+    <material>Gazebo/RustySteel</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  
+</robot>

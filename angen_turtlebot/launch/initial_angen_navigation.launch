@@ -1,0 +1,7 @@
+<launch>
+  <node name="current_pose_publisher" pkg="angen_turtlebot" type="current_pose_publisher" respawn="true" output="screen" cwd="node" ns="robot1"/>
+  <node name="current_pose_publisher" pkg="angen_turtlebot" type="current_pose_publisher" respawn="true" output="screen" cwd="node" ns="robot2"/>
+  <node name="key_based_nav" pkg="angen_turtlebot" type="key_based_nav" respawn="true" output="screen" cwd="node" ns="robot1"/>
+  <node name="key_based_nav" pkg="angen_turtlebot" type="key_based_nav" respawn="true" output="screen" cwd="node" ns="robot2"/>
+  <node name="setup" pkg="angen_turtlebot" type="setup" respawn="false" output="screen" cwd="node"/>
+</launch>

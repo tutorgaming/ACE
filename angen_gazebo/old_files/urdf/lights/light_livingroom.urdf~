@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+
+<robot name="light_livingroom" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:gazebo="http://playerstage.sourceforge.net/gazebo/xmlschema/#gz"
+	xmlns:model="http://playerstage.sourceforge.net/gazebo/xmlschema/#model"
+	xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+	xmlns:body="http://playerstage.sourceforge.net/gazebo/xmlschema/#body"
+	xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom"
+	xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#joint"
+	xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+	xmlns:rendering="http://playerstage.sourceforge.net/gazebo/xmlschema/#rendering"
+	xmlns:renderable="http://playerstage.sourceforge.net/gazebo/xmlschema/#renderable"
+	xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+	xmlns:physics="http://playerstage.sourceforge.net/gazebo/xmlschema/#physics">
+
+  <link name="bulb_livingroom">
+   <inertial>
+	<mass value="1" />
+			<com xyz="7.6 4.2 1.5" />
+			<inertia ixx="0" ixy="0.0" ixz="0.0" iyy="0" iyz="0.0" izz="0" />
+		</inertial>
+
+		<visual>
+			<origin xyz="7.6 4.2 1.5" rpy="0 0 0" />  <!--   definition of the visual postion of the object!! -->
+			<geometry>
+				<sphere radius="0.0001" />
+			</geometry>
+		</visual>
+		<collision>
+			<origin xyz="7.6 4.2 1.5" rpy="0 0 0" />
+			<geometry>
+				<sphere radius="0.0001" />
+			</geometry>
+		</collision>
+	</link>
+
+	<gazebo reference="bulb_livingroom">
+		<model:renderable name="light_livingroom">
+			<xyz>7.6 4.2 1.5</xyz>
+			<static>true</static>
+			<light>
+				<type>point</type>
+				<diffuseColor>0.1 0.1 0.1</diffuseColor>
+				<specularColor>.01 .01 .01</specularColor>
+				<attenuation>0.1 0.1 0.0001</attenuation>
+				<range>4</range>
+			</light>
+		</model:renderable>
+	</gazebo>
+</robot>

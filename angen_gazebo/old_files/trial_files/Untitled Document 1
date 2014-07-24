@@ -1,0 +1,67 @@
+<joint name="door_tophingeblock" type="fixed">
+    <axis xyz="0 1 0"/>
+    <parent link="door"/>
+    <child link="hinge_block_top"/>
+    <origin rpy="0 0 0" xyz="-0.47 -0.03 1.5"/>
+  </joint> 
+  
+  <joint name="door_bottomhingeblock" type="fixed">
+    <axis xyz="0 1 0"/>
+    <parent link="door"/>
+    <child link="hinge_block_bottom"/>
+    <origin rpy="0 0 0" xyz="-0.47 -0.03 .5"/>
+  </joint>
+  
+  <link name="hinge_block_top">
+    <inertial>
+      <mass value=".25"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 -0.003 0"/>
+      <geometry>
+        <box size=".06 .006 .08"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 -0.003 0"/>
+      <geometry>
+        <box size=".06 .006 .08"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="hinge_block_top">
+    <material>Gazebo/White</material>
+    <laserRetro>2000</laserRetro>
+    <dampingFactor>0.006</dampingFactor>
+    <selfCollide>false</selfCollide>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="hinge_block_bottom">
+    <inertial>
+      <mass value=".25"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 -0.003 0"/>
+      <geometry>
+        <box size=".06 .006 .08"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 -0.003 0"/>
+      <geometry>
+        <box size=".06 .006 .08"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="hinge_block_bottom">
+    <material>Gazebo/White</material>
+    <laserRetro>2000</laserRetro>
+    <dampingFactor>0.006</dampingFactor>
+    <selfCollide>false</selfCollide>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>

@@ -1,0 +1,11 @@
+<launch>  
+ <!-- start gazebo with boxes -->
+  <param name="/use_sim_time" value="true" />
+  <node launch-prefix="optirun" name="gazebo" pkg="gazebo" type="gazebo" args="-u $(find angen_gazebo)/worlds/angen_furnitures.world" respawn="false" output="screen">
+
+<remap from="scan" to="peis_scan" />
+<remap from="odom" to="peis_odom" />
+<remap from="/camera/depth/points" to="peis_kinect" />
+</node>
+  <include file="$(find angen_turtlebot)/launch/turtlebot.launch"/>
+</launch>

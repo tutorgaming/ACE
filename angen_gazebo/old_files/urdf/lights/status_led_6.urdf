@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="status_6">
+
+<link name="world"/>
+  <joint name="status_6_pose" type="fixed">
+    <axis xyz="1 0 0"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="5.85 8.2495 1.465"/>
+    <child link="status_6"/>
+    <dynamics damping="100" friction="1000"/>
+  </joint>
+         
+<link name="status_6">
+     <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <mass value="0.002" />
+      <inertia  ixx="1.0" ixy="0.0"  ixz="0.0"  iyy="100.0"  iyz="0.0"  izz="1.0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <geometry>
+        <box size="0.03 0.001 0.04" />
+      </geometry>
+    </visual>
+    <collision name="status_6">
+     <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <geometry>
+       <box size="0.03 0.001 0.04" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="status_6">
+    <material>Gazebo/Red</material>    
+  </gazebo>
+</robot>

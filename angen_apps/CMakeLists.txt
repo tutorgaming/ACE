@@ -1,0 +1,41 @@
+cmake_minimum_required(VERSION 2.4.6)
+include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+
+# Set the build type.  Options are:
+#  Coverage       : w/ debug symbols, w/o optimization, w/ code-coverage
+#  Debug          : w/ debug symbols, w/o optimization
+#  Release        : w/o debug symbols, w/ optimization
+#  RelWithDebInfo : w/ debug symbols, w/ optimization
+#  MinSizeRel     : w/o debug symbols, w/ optimization, stripped binaries
+#set(ROS_BUILD_TYPE RelWithDebInfo)
+
+rosbuild_init()
+
+#set the default path for built executables to the "bin" directory
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+#set the default path for built libraries to the "lib" directory
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+
+#uncomment if you have defined messages
+rosbuild_genmsg()
+#uncomment if you have defined services
+rosbuild_gensrv()
+
+#common commands for building c++ executables and libraries
+#rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
+#target_link_libraries(${PROJECT_NAME} another_library)
+#rosbuild_add_boost_directories()
+#rosbuild_link_boost(${PROJECT_NAME} thread)
+#rosbuild_add_executable(example examples/example.cpp)
+#target_link_libraries(example ${PROJECT_NAME})
+#rosbuild_add_executable(actuator_controller_server src/actuator_controller_server.cpp)
+
+rosbuild_add_executable(elevator_control src/elevator_control.cpp)
+rosbuild_add_executable(actuator_control src/actuator_control.cpp)
+rosbuild_add_executable(navigation_controller src/navigation_controller.cpp)
+rosbuild_add_executable(spawn_actuators src/spawn_actuators.cpp)
+rosbuild_add_executable(spawn_sensors src/spawn_sensors.cpp)
+rosbuild_add_executable(spawn_elevator src/spawn_elevator.cpp)
+rosbuild_add_executable(contact_manager src/contact_manager.cpp)
+rosbuild_add_executable(actuator_controller src/actuator_controller.cpp)
+rosbuild_add_executable(params src/param_trial.cpp)

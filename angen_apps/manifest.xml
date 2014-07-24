@@ -1,0 +1,33 @@
+<package>
+
+  <description brief="angen_apps">
+  
+  </description>
+  
+  <author>Prasanna Kumar S, Orebro University, Orebro, Sweden</author>
+  
+  <license>BSD</license>
+  
+  <review status="unreviewed" notes=""/>
+  
+  <url>http://ros.org/wiki/angen_cognitive_environment/angen_apps</url>
+  
+  <depend package="roscpp"/>
+  <depend package="roslib"/>
+  <depend package="std_msgs"/>
+  <depend package="openni"/>
+  <depend package="gazebo"/>
+  <depend package="kdl"/>
+  <depend package="tf"/>
+  <depend package="laser_assembler"/>
+  <depend package="xacro"/>
+  <depend package="convex_decomposition"/>
+  <depend package="ivcon"/>
+  <depend package="gazebo"/>
+  <depend package="gazebo_tools"/>
+  <depend package="gazebo_plugins"/>
+  <depend package="angen_turtlebot"/>
+  
+</package>
+
+

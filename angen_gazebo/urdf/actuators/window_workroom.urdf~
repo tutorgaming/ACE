@@ -1,0 +1,177 @@
+<?xml version="1.0" ?>
+
+<robot name="window_workroom">
+  
+  <gazebo reference="wbase_wr">
+    <material>Gazebo/GrassFloor</material>
+  </gazebo>
+
+  <link name="world"/>
+
+  <joint name="wlink_joint_wr1" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="-0.15 7.375 1.5"/>
+    <limit effort="1000.0" lower="-0" upper="1.57" velocity="0.5"/>
+    <child link="wlink_wr1"/>
+    <dynamics damping="10" friction="1000"/>
+  </joint>
+  
+  <joint name="wlink_joint_wr2" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="-0.15 7.575 1.5"/>
+    <limit effort="1000.0" lower="-0" upper="1.57" velocity="0.5"/>
+    <child link="wlink_wr2"/>
+    <dynamics damping="10" friction="1000"/>
+  </joint>
+  
+  <joint name="wlink_joint_wr3" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="-0.15 7.775 1.5"/>
+    <limit effort="1000.0" lower="-0" upper="1.57" velocity="0.5"/>
+    <child link="wlink_wr3"/>
+    <dynamics damping="10" friction="1000"/>
+  </joint>
+  
+  <joint name="wlink_joint_wr4" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="-0.15 7.975 1.5"/>
+    <limit effort="1000.0" lower="-0" upper="1.57" velocity="0.5"/>
+    <child link="wlink_wr4"/>
+    <dynamics damping="10" friction="1000"/>
+  </joint>
+  
+  <joint name="wlink_joint_wr5" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="-0.15 8.175 1.5"/>
+    <limit effort="1000.0" lower="-0" upper="1.57" velocity="0.5"/>
+    <child link="wlink_wr5"/>
+    <dynamics damping="10" friction="1000"/>
+  </joint>
+  
+
+  <link name="wlink_wr1">
+    <inertial>
+      <mass value="10"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 1.57" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.15 0.02 1.5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 90" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.15 0.02 1.5"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="wlink_wr1">
+    <material>Gazebo/RustySteel</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+  <link name="wlink_wr2">
+    <inertial>
+      <mass value="10"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 1.57" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 90" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="wlink_wr2">
+    <material>Gazebo/RustySteel</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="wlink_wr3">
+    <inertial>
+      <mass value="10"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 1.57" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 90" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="wlink_wr3">
+    <material>Gazebo/RustySteel</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="wlink_wr4">
+    <inertial>
+      <mass value="10"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 1.57" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 90" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.17 0.05 1.5"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="wlink_wr4">
+    <material>Gazebo/RustySteel</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="wlink_wr5">
+    <inertial>
+      <mass value="10"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 1.57" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.18 0.05 1.5"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 90" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.18 0.05 1.5"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="wlink_wr5">
+    <material>Gazebo/RustySteel</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+</robot>

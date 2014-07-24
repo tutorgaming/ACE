@@ -1,0 +1,4 @@
+<launch>
+  <node name="current_pose_publisher" pkg="angen_turtlebot" type="current_pose_publisher" respawn="true" output="screen" cwd="node" />
+  <node name="AngenManager1" pkg="angen_turtlebot" type="AngenLocationManager" respawn="true" output="screen" cwd="node" />
+</launch>

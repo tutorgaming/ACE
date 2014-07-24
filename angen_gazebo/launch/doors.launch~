@@ -1,0 +1,7 @@
+rosrun gazebo spawn_model -file /home/angenuser/ros_workspace/angen_gazebo/urdf/Doors/door_entrance.urdf -urdf -model door_e&
+rosrun gazebo spawn_model -file /home/angenuser/ros_workspace/angen_gazebo/urdf/Doors/door_workroom.urdf -urdf -model door_wr&
+rosrun gazebo spawn_model -file /home/angenuser/ros_workspace/angen_gazebo/urdf/Doors/door_bathroom.urdf -urdf -model door_k&
+rosrun gazebo spawn_model -file /home/angenuser/ros_workspace/angen_gazebo/urdf/Doors/door_bathroom.urdf -urdf -model door_ber&
+rosrun gazebo spawn_model -file /home/angenuser/ros_workspace/angen_gazebo/urdf/Doors/door_bathroom.urdf -urdf -model door_bar&
+rosrun gazebo spawn_model -file /home/angenuser/ros_workspace/angen_gazebo/urdf/Doors/door_bathroom.urdf -urdf -model door_c&
+rosrun gazebo spawn_model -file /home/angenuser/ros_workspace/angen_gazebo/urdf/Doors/door_bathroom.urdf -urdf -model door_bac

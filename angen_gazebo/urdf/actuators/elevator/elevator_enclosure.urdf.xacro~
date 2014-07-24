@@ -1,0 +1,169 @@
+<?xml version="1.0" ?>
+<robot name="elevator_enclosure" xmlns:xacro="http://ros.org/wiki/xacro" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:gazebo="http://playerstage.sourceforge.net/gazebo/xmlschema/#gz" xmlns:model="http://playerstage.sourceforge.net/gazebo/xmlschema/#model" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:body="http://playerstage.sourceforge.net/gazebo/xmlschema/#body" xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom" xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#joint" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" xmlns:rendering="http://playerstage.sourceforge.net/gazebo/xmlschema/#rendering" xmlns:renderable="http://playerstage.sourceforge.net/gazebo/xmlschema/#renderable" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:physics="http://playerstage.sourceforge.net/gazebo/xmlschema/#physics">
+    <property name="x_position" value="-1.43" />
+    <property name="y_position" value="11.5" />
+    <property name="x_world_offset" value="-5" />
+    <property name="y_world_offset" value="-5" />
+    <property name="gap_between_floors" value="7" />
+    <link name="world" />
+    <joint name="world_eeblock" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="world" />
+        <child link="elevator_enclosure_block" />
+        <origin rpy="0 0 -1.57" xyz="${x_position + x_world_offset + 0}  ${y_position + y_world_offset + 0} 0" />
+    </joint>
+    <joint name="eeblock_eeleft" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="elevator_enclosure_block" />
+        <child link="elevator_enclosure_left" />
+        <origin rpy="0 0 1.57" xyz="-1.033 0 0" />
+    </joint>
+    <joint name="eeblock_eeright" type="fixed">
+        <axis xyz="0 0 1" />
+        <origin rpy="0 0 1.57" xyz="1.033 0 0" />
+        <parent link="elevator_enclosure_block" />
+        <child link="elevator_enclosure_right" />
+    </joint>
+    <joint name="eeblock_eeback" type="fixed">
+        <axis xyz="0 0 1" />
+        <origin rpy="0 0 0" xyz="0 -1.033 0" />
+        <parent link="elevator_enclosure_block" />
+        <child link="elevator_enclosure_back" />
+    </joint>
+    <joint name="eblock_etop" type="fixed">
+        <axis xyz="0 0 1" />
+        <origin rpy="0 0 0" xyz="0 0 ${6 + gap_between_floors}" />
+        <parent link="elevator_enclosure_block" />
+        <child link="elevator_enclosure_top" />
+    </joint>
+    <link name="elevator_enclosure_block">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="10.0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0 0 0" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0 0 0" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="elevator_enclosure_block">
+        <material>Gazebo/BlueTransparent</material>
+        <dampingFactor>.005</dampingFactor>
+        <selfCollide>false</selfCollide>
+        <laserRetro>2000</laserRetro>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <link name="elevator_enclosure_left">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="10.0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 ${6/2 + gap_between_floors/2}" rpy="0 0 0" />
+            <geometry>
+                <box size="2.06 0.06 ${6 + gap_between_floors}" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 ${6/2 + gap_between_floors/2}" rpy="0 0 0" />
+            <geometry>
+                <box size="2.06 0.06 ${6 + gap_between_floors}" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="elevator_enclosure_left">
+        <material>Gazebo/BlueTransparent</material>
+        <dampingFactor>.005</dampingFactor>
+        <selfCollide>false</selfCollide>
+        <laserRetro>2000</laserRetro>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <link name="elevator_enclosure_right">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="10.0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 ${6/2 + gap_between_floors/2}" rpy="0 0 0" />
+            <geometry>
+                <box size="2.06 0.06 ${6 + gap_between_floors}" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 ${6/2 + gap_between_floors/2}" rpy="0 0 0" />
+            <geometry>
+                <box size="2.06 0.06 ${6 + gap_between_floors}" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="elevator_enclosure_right">
+        <material>Gazebo/BlueTransparent</material>
+        <dampingFactor>.005</dampingFactor>
+        <selfCollide>false</selfCollide>
+        <laserRetro>2000</laserRetro>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <link name="elevator_enclosure_back">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="10.0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 ${6/2 + gap_between_floors/2}" rpy="0 0 0" />
+            <geometry>
+                <box size="2.12 0.06 ${6 + gap_between_floors}" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 ${6/2 + gap_between_floors/2}" rpy="0 0 0" />
+            <geometry>
+                <box size="2.12 0.06 ${6 + gap_between_floors}" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="elevator_enclosure_back">
+        <material>Gazebo/BlueTransparent</material>
+        <dampingFactor>.005</dampingFactor>
+        <selfCollide>false</selfCollide>
+        <laserRetro>2000</laserRetro>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <link name="elevator_enclosure_top">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="10.0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0.03" rpy="0 0 0" />
+            <geometry>
+                <box size="2.06 2.12 .06" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.03" rpy="0 0 0" />
+            <geometry>
+                <box size="2.06 2.12 .06" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="elevator_enclosure_top">
+        <material>Gazebo/CeilingTiled</material>
+        <dampingFactor>.005</dampingFactor>
+        <selfCollide>false</selfCollide>
+        <laserRetro>2000</laserRetro>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+</robot>

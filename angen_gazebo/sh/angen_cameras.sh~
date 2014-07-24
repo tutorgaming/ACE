@@ -1,0 +1,1 @@
+rosrun gazebo spawn_model -file `rospack find angen_gazebo`/urdf/sensors/cameras/camera_bedroom.urdf -urdf -z 2.3 -model camera_br

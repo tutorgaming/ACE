@@ -1,0 +1,1649 @@
+<?xml version="1.0"?>
+
+<gazebo:world 
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:gazebo="http://playerstage.sourceforge.net/gazebo/xmlschema/#gz" 
+  xmlns:model="http://playerstage.sourceforge.net/gazebo/xmlschema/#model" 
+  xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" 
+  xmlns:window="http://playerstage.sourceforge.net/gazebo/xmlschema/#window" 
+  xmlns:param="http://playerstage.sourceforge.net/gazebo/xmlschema/#param" 
+  xmlns:body="http://playerstage.sourceforge.net/gazebo/xmlschema/#body" 
+  xmlns:geo="http://willowgarage.com/xmlschema/#geo" 
+  xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom" 
+  xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#joint" 
+  xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" 
+  xmlns:ui="http://playerstage.sourceforge.net/gazebo/xmlschema/#ui"
+  xmlns:rendering="http://playerstage.sourceforge.net/gazebo/xmlschema/#rendering" 
+  xmlns:renderable="http://playerstage.sourceforge.net/gazebo/xmlschema/#renderable" 
+  xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+  xmlns:physics="http://playerstage.sourceforge.net/gazebo/xmlschema/#physics" >
+
+<!--Description of the World's Properties begins here-->
+  <thread>4</thread>
+  <verbosity>5</verbosity>
+  <physics:ode>
+    <stepTime>0.001</stepTime>
+    <gravity>0 0 -9.8</gravity>
+    <cfm>0.0000000001</cfm>
+    <erp>0.2</erp>
+    <quickStep>true</quickStep>
+    <quickStepIters>10</quickStepIters>
+    <quickStepW>1.3</quickStepW>
+    <contactMaxCorrectingVel>100.0</contactMaxCorrectingVel>
+    <contactSurfaceLayer>0.001</contactSurfaceLayer>
+  </physics:ode>
+
+  <geo:origin>
+    <lat>37.4270909558</lat><lon>-122.077919338</lon>
+  </geo:origin>
+
+  <rendering:gui>
+    <type>fltk</type>
+    <size>480 320</size>
+    <pos>0 0</pos>
+    <frames>
+      <row height="100%">
+        <camera width="100%">
+          <xyz>0.3 0 3</xyz>
+          <rpy>0 90 90</rpy>
+        </camera>
+      </row>
+    </frames>
+  </rendering:gui>
+
+  <rendering:ogre>
+    <ambient>0.5 0.5 0.5 0.5</ambient>
+    <sky>
+      <material>Gazebo/CloudySky</material>
+    </sky>
+    <grid>false</grid>
+    <maxUpdateRate>10.</maxUpdateRate>
+    <shadowTechnique>none</shadowTechnique>
+    <shadows>false</shadows>
+  </rendering:ogre>
+
+  <model:physical name="gplane">
+    <xyz>0 0 0</xyz>	
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+
+    <body:plane name="plane">
+      <geom:plane name="plane">
+        <laserRetro>2000.0</laserRetro>
+        <mu1>50.0</mu1>
+        <mu2>50.0</mu2>
+        <kp>1000000000.0</kp>
+        <kd>1.0</kd>
+        <normal>0 0 1</normal>
+        <size>51.3 51.3</size>
+        <segments>10 10</segments>
+        <uvTile>100 100</uvTile>
+        <material>Gazebo/GrayGrid</material>
+      </geom:plane>
+    </body:plane>
+  </model:physical>
+
+  
+
+<model:renderable name="second_white">
+    <xyz>2.0 2.0 8</xyz>
+    <enableGravity>false</enableGravity>
+    <light>
+      <type>point</type>
+      <diffuseColor>0.5 0.5 0.5</diffuseColor>
+      <specularColor>.1 .1 .1</specularColor>
+      <attenuation>0.2 0.1 0</attenuation>
+      <range>10</range>
+    </light>
+  </model:renderable>
+
+<!--Description of the World's Properties ends here-->
+
+<!--****************************** EMPTY ANGEN *****************************-->
+<!--########### Description of OUTER WALLS begins here ############-->
+  <model:physical name="ow_1">
+    <xyz>3.3 0.15 1.5</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+     <body:box name="ow_1_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="ow_1_geom">
+        <xyz>0 0 0</xyz>
+        <size>7.4 0.3 3</size>                
+        <mass>1</mass>
+        <visual>
+          <size>7.4 0.3 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="ow_2">
+    <xyz>6.85 1.5 1.5</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="ow_2_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="ow_2_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>2.4 0.3 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>2.4 0.3 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="ow_3">
+    <xyz>8.95 2.85 1.5</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="ow_3_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="ow_3_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>5.5 0.3 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>5.5 0.3 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="ow_4">
+    <xyz>8.45 7.15 1.5</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="ow_4_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="ow_4_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>4.5 0.3 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>4.5 0.3 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="ow_5">
+    <xyz>10.815 7.25 1.5</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="ow_5_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="ow_5_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.8 0.3 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.8 0.3 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="ow_6">
+    <xyz>6.35 7.9 1.5</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="ow_6_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="ow_6_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>1.2 0.3 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>1.2 0.3 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="ow_7">
+    <xyz>5.8 8.4 1.5</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="ow_7_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="ow_7_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.8 0.2 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.8 0.2 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+ 
+  <model:physical name="ow_8">
+    <xyz>2 8.4 1.5</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="ow_8_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="ow_8_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>4.8 0.2 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>4.8 0.2 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+<!--########### Description of OUTER WALLS ends here ############-->
+
+<!--########### Description of INNER WALLS begins here ############-->
+  <model:physical name="iw_1">
+    <xyz>1.55 6.15 1.5</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="iw_1_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="iw_1_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>3.9 0.3 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>3.9 0.3 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+    <model:physical name="iw_2">
+    <xyz>1.55 3.15 1.5</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="iw_2_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="iw_2_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>3.9 0.3 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>3.9 0.3 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+    <model:physical name="iw_3">
+    <xyz>3.6 8.2 1.5</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="iw_3_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="iw_3_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.2 0.2 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.2 0.2 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+    <model:physical name="iw_4">
+    <xyz>3.6 6.05 1.5</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="iw_4_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="iw_4_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>2.1 0.2 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>2.1 0.2 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+    <model:physical name="iw_5">
+    <xyz>3.6 3.4 1.5</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="iw_5_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="iw_5_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>1.2 0.2 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>1.2 0.2 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+    <model:physical name="iw_6">
+    <xyz>3.6 1.05 1.5</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="iw_6_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="iw_6_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>1.5 0.2 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>1.5 0.2 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+    <model:physical name="iw_7">
+    <xyz>3.95 1.7 1.5</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="iw_7_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="iw_7_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.5 0.2 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.5 0.2 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+    <model:physical name="iw_8">
+    <xyz>5.95 1.7 1.5</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="iw_8_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="iw_8_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>1.5 0.2 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>1.5 0.2 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+    <model:physical name="iw_9">
+    <xyz>5.6 1.90 1.5</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="iw_9_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="iw_9_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.2 0.2 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.2 0.2 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+    <model:physical name="iw_10">
+    <xyz>5.6 2.7 1.5</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="iw_10_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="iw_10_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.2 0.2 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.2 0.2 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+    <model:physical name="iw_11">
+    <xyz>5.85 2.9 1.5</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="iw_11_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="iw_11_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.7 0.2 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.7 0.2 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+<!--########### Description of INNER WALLS ends here ############-->
+
+<!--########### Description of TOP WALLS begins here ############-->
+  <model:physical name="etw">
+    <xyz>5 8.4 2.625</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="etw_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="etw_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>2 0.2 0.75</size>
+        <mass>1</mass>
+        <visual>
+          <size>2 0.2 0.75</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+   <model:physical name="wrtw">
+    <xyz>3.6 7.3 2.625</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="wrtw_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="wrtw_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>2 0.2 0.75</size>
+        <mass>1</mass>
+        <visual>
+          <size>2 0.2 0.75</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="ktw">
+    <xyz>3.6 4.6 2.625</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="ktw_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="ktw_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>1.4 0.2 0.75</size>
+        <mass>1</mass>
+        <visual>
+          <size>1.4 0.2 0.75</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="brtw">
+    <xyz>3.6 2.55 2.625</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="brtw_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="brtw_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>2 0.2 0.75</size>
+        <mass>1</mass>
+        <visual>
+          <size>2 0.2 0.75</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="ttw">
+    <xyz>4.7 1.7 2.625</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="ttw_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="ttw_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>1 0.2 0.75</size>
+        <mass>1</mass>
+        <visual>
+          <size>1 0.2 0.75</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="ctw">
+    <xyz>5.6 2.45 2.625</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="ctw_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="ctw_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>1 0.2 0.75</size>
+        <mass>1</mass>
+        <visual>
+          <size>1 0.2 0.75</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="batw">
+    <xyz>10.815 6.35 2.625</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="batw_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="batw_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>1 0.3 0.75</size>
+        <mass>1</mass>
+        <visual>
+          <size>1 0.3 0.75</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>  
+<!--########### Description of TOP WALLS ends here ############-->
+
+<!--########### Description of FLOORS begins here ############-->
+  <model:physical name="floor_1">
+    <xyz>3.1 4.3 0.025</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="floor_1_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="floor_1_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>6.2 8 0.05</size>
+        <mass>1</mass>
+        <visual>
+          <size>6.2 8 0.05</size>
+          <material>Gazebo/Wood</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="floor_2">
+    <xyz>6.45 1.5 0.025</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="floor_2_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="floor_2_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.5 2.2 0.05</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.5 2.4 0.05</size>
+          <material>Gazebo/Wood</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="floor_3">
+    <xyz>8.4325 5 0.025</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="floor_3_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="floor_3_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>4.465 4 0.05</size>
+        <mass>1</mass>
+        <visual>
+          <size>4.465 4 0.05</size>
+          <material>Gazebo/Wood</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+<!--########### Description of FLOORS ends here ############-->
+
+<!--########### Description of WINDOWS begins here ############-->
+  <model:physical name="w1_b">
+    <xyz>-0.2 4.25 0.375</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="w1_b_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="w1_b_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>8.5 0.4 0.75</size>
+        <mass>1</mass>
+        <visual>
+          <size>8.5 0.4 0.75</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+    <model:physical name="w1_t">
+    <xyz>-0.2 4.25 2.625</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="w1_t_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="w1_t_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>8.5 0.4 0.75</size>
+        <mass>1</mass>
+        <visual>
+          <size>8.5 0.4 0.75</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="w1_me_1">
+    <xyz>-0.2 6.8 1.5</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="w1_me_1_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="w1_me_1_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>1 0.4 1.5</size>
+        <mass>1</mass>
+        <visual>
+          <size>1 0.4 1.5</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+    <model:physical name="w1_me_2">
+    <xyz>-0.2 5.65 1.5</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="w1_me_2_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="w1_me_2_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.7 0.4 1.5</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.7 0.4 1.5</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="w1_me_3">
+    <xyz>-0.2 2.85 1.5</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="w1_me_3_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="w1_me_3_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.3 0.4 1.5</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.3 0.4 1.5</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="w1_me_4">
+    <xyz>-0.2 0.9 1.5</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="w1_me_4_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="w1_me_4_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>1.2 0.4 1.5</size>
+        <mass>1</mass>
+        <visual>
+          <size>1.2 0.4 1.5</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+    <model:physical name="w1_g_1">
+    <xyz>-0.35 7.8 1.5</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="w1_g_1_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="w1_g_1_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>1 0.1 1.5</size>
+        <mass>1</mass>
+        <visual>
+          <size>1 0.1 1.5</size>
+          <material>Gazebo/Grey</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical> 
+
+      <model:physical name="w1_g_2">
+    <xyz>-0.35 4.3 1.5</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="w1_g_2_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="w1_g_2_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>2 0.1 1.5</size>
+        <mass>1</mass>
+        <visual>
+          <size>2 0.1 1.5</size>
+          <material>Gazebo/Grey</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical> 
+
+    <model:physical name="w1_g_3">
+    <xyz>-0.35 2.1 1.5</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="w1_g_3_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="w1_g_3_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>1.2 0.1 1.5</size>
+        <mass>1</mass>
+        <visual>
+          <size>1.2 0.1 1.5</size>
+          <material>Gazebo/Grey</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="w2_l">
+    <xyz>10.815 5.75 1.5</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="w2_l_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="w2_l_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.2 0.3 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.2 0.3 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="w2_r">
+    <xyz>10.815 3.225 1.5</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="w2_r_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="w2_r_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.45 0.3 3</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.45 0.3 3</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="w2_t">
+    <xyz>10.815 4.55 2.625</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="w2_t_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="w2_t_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>2.2 0.3 0.75</size>
+        <mass>1</mass>
+        <visual>
+          <size>2.2 0.3 0.75</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="w2_b">
+    <xyz>10.815 4.55 0.375</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="w2_b_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="w2_b_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>2.2 0.3 0.75</size>
+        <mass>1</mass>
+        <visual>
+          <size>2.2 0.3 0.75</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="w2_g">
+    <xyz>10.915 4.55 1.5</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="w2_g_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="w2_g_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>2.2 0.1 1.5</size>
+        <mass>1</mass>
+        <visual>
+          <size>2.2 0.1 1.5</size>
+          <material>Gazebo/Grey</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+<!--########### Description of WINDOWS ends here ############-->
+
+<!--########### Description of HINGES AND TRESHOLDS begins here ############-->
+  <!--<model:physical name="hinge1">
+    <xyz>3.7 7.8 0.6</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:cylinder name="hinge1_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:cylinder name="hinge1_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.05 0.1</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.05 0.05 0.1</size>
+          <material>Gazebo/Black</material>
+          <mesh>unit_cylinder</mesh>
+        </visual>
+      </geom:cylinder>
+    </body:cylinder>
+
+  </model:physical>
+   <model:physical name="hinge2">
+    <xyz>3.7 7.8 1.6</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:cylinder name="hinge2_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:cylinder name="hinge2_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.05 0.1</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.05 0.05 0.1</size>
+          <material>Gazebo/Black</material>
+          <mesh>unit_cylinder</mesh>
+        </visual>
+      </geom:cylinder>
+    </body:cylinder>
+  </model:physical>
+
+  <model:physical name="hinge3">
+    <xyz>4.9 1.8 0.6</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:cylinder name="hinge3_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:cylinder name="hinge3_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.05 0.1</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.05 0.05 0.1</size>
+          <material>Gazebo/Black</material>
+          <mesh>unit_cylinder</mesh>
+        </visual>
+      </geom:cylinder>
+    </body:cylinder>
+  </model:physical>
+
+   <model:physical name="hinge4">
+    <xyz>4.9 1.8 1.6</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:cylinder name="hinge4_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:cylinder name="hinge4_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.05 0.1</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.05 0.05 0.1</size>
+          <material>Gazebo/Black</material>
+          <mesh>unit_cylinder</mesh>
+        </visual>
+      </geom:cylinder>
+    </body:cylinder>
+  </model:physical>
+
+  <model:physical name="hinge5">
+    <xyz>5.5 2.6 0.6</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:cylinder name="hinge5_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:cylinder name="hinge5_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.05 0.1</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.05 0.05 0.1</size>
+          <material>Gazebo/Black</material>
+          <mesh>unit_cylinder</mesh>
+        </visual>
+      </geom:cylinder>
+    </body:cylinder>
+
+  </model:physical>
+   <model:physical name="hinge6">
+    <xyz>5.5 2.6 1.6</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:cylinder name="hinge6_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:cylinder name="hinge6_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.05 0.1</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.05 0.05 0.1</size>
+          <material>Gazebo/Black</material>
+          <mesh>unit_cylinder</mesh>
+        </visual>
+      </geom:cylinder>
+    </body:cylinder>
+  </model:physical>
+
+  <model:physical name="hinge8">
+    <xyz>5.4 8.5 0.6</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:cylinder name="hinge8_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:cylinder name="hinge8_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.05 0.1</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.05 0.05 0.1</size>
+          <material>Gazebo/Black</material>
+          <mesh>unit_cylinder</mesh>
+        </visual>
+      </geom:cylinder>
+    </body:cylinder>
+
+  </model:physical>
+   <model:physical name="hinge7">
+    <xyz>5.4 8.5 1.6</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:cylinder name="hinge7_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:cylinder name="hinge7_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.05 0.1</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.05 0.05 0.1</size>
+          <material>Gazebo/Black</material>
+          <mesh>unit_cylinder</mesh>
+        </visual>
+      </geom:cylinder>
+    </body:cylinder>
+  </model:physical>
+
+  <model:physical name="hinge9">
+    <xyz>3.7 5 0.6</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:cylinder name="hinge9_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:cylinder name="hinge9_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.05 0.1</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.05 0.05 0.1</size>
+          <material>Gazebo/Black</material>
+          <mesh>unit_cylinder</mesh>
+        </visual>
+      </geom:cylinder>
+    </body:cylinder>
+
+  </model:physical>
+   <model:physical name="hinge10">
+    <xyz>3.7 5 1.6</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:cylinder name="hinge10_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:cylinder name="hinge10_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.05 0.1</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.05 0.05 0.1</size>
+          <material>Gazebo/Black</material>
+          <mesh>unit_cylinder</mesh>
+        </visual>
+      </geom:cylinder>
+    </body:cylinder>
+  </model:physical>
+
+  <model:physical name="hinge11">
+    <xyz>10.665 5.85 0.6</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:cylinder name="hinge11_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:cylinder name="hing11_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.05 0.1</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.05 0.05 0.1</size>
+          <material>Gazebo/Black</material>
+          <mesh>unit_cylinder</mesh>
+        </visual>
+      </geom:cylinder>
+    </body:cylinder>
+
+  </model:physical>
+   <model:physical name="hinge12">
+    <xyz>10.665 5.85 1.6</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:cylinder name="hinge12_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:cylinder name="hinge12_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.05 0.1</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.05 0.05 0.1</size>
+          <material>Gazebo/Black</material>
+          <mesh>unit_cylinder</mesh>
+        </visual>
+      </geom:cylinder>
+    </body:cylinder>
+  </model:physical>
+
+  <model:physical name="hinge13">
+    <xyz>3.7 2.5 0.6</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:cylinder name="hinge13_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:cylinder name="hinge13_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.05 0.1</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.05 0.05 0.1</size>
+          <material>Gazebo/Black</material>
+          <mesh>unit_cylinder</mesh>
+        </visual>
+      </geom:cylinder>
+    </body:cylinder>
+
+  </model:physical>
+   <model:physical name="hinge14">
+    <xyz>3.7 2.5 1.6</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:cylinder name="hinge14_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:cylinder name="hinge14_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.05 0.1</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.05 0.05 0.1</size>
+          <material>Gazebo/Black</material>
+          <mesh>unit_cylinder</mesh>
+        </visual>
+      </geom:cylinder>
+    </body:cylinder>
+  </model:physical>
+
+  <model:physical name="th_e">
+    <xyz>4.9 8.4 0.03</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="th_e_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="th_e_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>1 0.3 0.06</size>
+        <mass>1</mass>
+        <visual>
+          <size>1 0.2 0.06</size>
+          <material>Gazebo/WoodFloor</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="th_w">
+    <xyz>3.6 7.4 0.055</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="th_w_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="th_w_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.8 0.2 0.01</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.8 0.2 0.01</size>
+          <material>Gazebo/WoodFloor</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="th_k">
+    <xyz>3.6 4.6 0.055</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="th_k_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="th_k_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.8 0.2 0.01</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.8 0.2 0.01</size>
+          <material>Gazebo/WoodFloor</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="th_b">
+    <xyz>3.6 2.1 0.055</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="th_b_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="th_b_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.8 0.2 0.01</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.8 0.2 0.01</size>
+          <material>Gazebo/WoodFloor</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="th_t">
+    <xyz>4.6 1.7 0.055</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="th_t_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="th_t_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.8 0.2 0.01</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.8 0.2 0.01</size>
+          <material>Gazebo/WoodFloor</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="th_c">
+    <xyz>5.6 2.3 0.055</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="th_c_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="th_c_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.6 0.2 0.01</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.6 0.2 0.01</size>
+          <material>Gazebo/WoodFloor</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="th_ba">
+    <xyz>10.815 6.25 0.03</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="th_ba_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="th_ba_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>0.8 0.3 0.06</size>
+        <mass>1</mass>
+        <visual>
+          <size>0.8 0.3 0.06</size>
+          <material>Gazebo/WoodFloor</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>-->
+<!--########### Description of HINGES AND TRESHOLDS ends here ############-->
+
+<!--########### Description of BALCONY begins here ############-->
+  <model:physical name="bw_1">
+    <xyz>11.465 7.15 0.5</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="bw_1_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="bw_1_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>2 0.3 1</size>
+        <mass>1</mass>
+        <visual>
+          <size>2 0.3 1</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="bw_2">
+    <xyz>12.315 5 0.5</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="bw_2_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="bw_2_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>4 0.3 1</size>
+        <mass>1</mass>
+        <visual>
+          <size>4 0.3 1</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="bw_3">
+    <xyz>11.465 2.85 0.5</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="bw_3_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="bw_3_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>2 0.3 1</size>
+        <mass>1</mass>
+        <visual>
+          <size>2 0.3 1</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="bw_4">
+    <xyz>11.465 7.15 2.625</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="bw_4_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="bw_4_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>2 0.3 0.75</size>
+        <mass>1</mass>
+        <visual>
+          <size>2 0.3 0.75</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="bw_5">
+    <xyz>12.315 5 2.625</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="bw_5_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="bw_5_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>4 0.3 0.75</size>
+        <mass>1</mass>
+        <visual>
+          <size>4 0.3 0.75</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="bw_6">
+    <xyz>11.465 2.85 2.625</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="bw_6_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="bw_6_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>2 0.3 0.75</size>
+        <mass>1</mass>
+        <visual>
+          <size>2 0.3 0.75</size>
+          <material>Gazebo/White</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="bg_1">
+    <xyz>11.465 7.25 1.625</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="bg_1_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="bg_1_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>2 0.1 1.25</size>
+        <mass>1</mass>
+        <visual>
+          <size>2 0.1 1.25</size>
+          <material>Gazebo/RedTransparent</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="bg_2">
+    <xyz>12.415 5 1.625</xyz>
+    <rpy>0 0 90</rpy>
+    <static>true</static>
+    <body:box name="bg_2_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="bg_2_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>4.6 0.1 1.25</size>
+        <mass>1</mass>
+        <visual>
+          <size>4.6 0.1 1.25</size>
+          <material>Gazebo/RedTransparent</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+  <model:physical name="bg_3">
+    <xyz>11.7325 2.75 1.625</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+    <body:box name="bg_3_body">
+      <xyz>0 0 0</xyz>
+      <rpy>0 0 0</rpy>
+      <geom:box name="bg_3_geom">
+        <xyz>0 0 0</xyz>
+	<rpy>0 0 0</rpy>
+        <size>1.465 0.1 1.25</size>
+        <mass>1</mass>
+        <visual>
+          <size>1.465 0.1 1.25</size>
+          <material>Gazebo/RedTransparent</material>
+          <mesh>unit_box</mesh>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+<!--########### Description of BALCONY ends here ############-->
+<!--****************************** EMPTY ANGEN *****************************-->
+</gazebo:world>

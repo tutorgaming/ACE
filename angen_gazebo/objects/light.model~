@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<model:physical xmlns:gazebo="http://playerstage.sourceforge.net/gazebo/xmlschema/#gz" xmlns:model="http://playerstage.sourceforge.net/gazebo/xmlschema/#model" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:body="http://playerstage.sourceforge.net/gazebo/xmlschema/#body" xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom" xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#joint" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" xmlns:rendering="http://playerstage.sourceforge.net/gazebo/xmlschema/#rendering" xmlns:physics="http://playerstage.sourceforge.net/gazebo/xmlschema/#physics" xmlns:renderable="http://playerstage.sourceforge.net/gazebo/xmlschema/#renderable" name="light_model">
+    <xyz>-0.599202 -2.07327 0.2</xyz>
+    <rpy>0 -0 0</rpy>
+    <enableGravity>1</enableGravity>
+    <enableFriction>1</enableFriction>
+    <collide>all</collide>
+    <light>
+      <type>point</type>
+      <direction>0 0 -1</direction>
+      <diffuseColor>0.5 0.5 0.5</diffuseColor>
+      <specularColor>0.1 0.1 0.1</specularColor>
+      <range>20</range>
+      <attenuation>0.5 0.01 0.001</attenuation>
+      <innerAngle>10</innerAngle>
+      <outterAngle>5</outterAngle>
+      <falloff>1</falloff>
+      <castShadows>1</castShadows>
+    </light>
+  </model:physical>
+
+ 

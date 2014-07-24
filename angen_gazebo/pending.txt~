@@ -1,0 +1,21 @@
+As of world:
+1.Reposition table with ipads, pchair, computer
+2.Spawn furnitures in kitchen
+3.See to that all furnitures are rigid, exact in shape and cast shadows
+4.Minor position editings
+5.Minor objects spawning
+
+As of the Actuators:
+1.Spawn all lights and ON OFF programatically with proper source and properties
+2.Solve the problem with doors and exactly open and close doors
+3.Write a program to do all this
+
+As of the Package:
+1.Write fuerte compatible files and get the entire world ready
+2.Organize the package as Maurizio said
+3.Prepare a perfect documentation
+
+As of the TB:
+1.Spawn TB and try simple auto navigation
+2.Work on what Maurizio said.  
+

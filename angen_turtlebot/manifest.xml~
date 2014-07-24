@@ -1,0 +1,35 @@
+<package>
+  <description brief="angen_turtlebot">
+
+     angen_turtlebot
+
+  </description>
+  <author>angenuser</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/angen_turtlebot</url>
+  <depend package="turtlebot_gazebo"/>
+  <depend package="angen_gazebo"/>
+  <depend package="geometry_msgs"/>
+  <depend package="actionlib"/>
+  <depend package="move_base_msgs"/>
+  <depend package="roscpp"/>
+  <depend package="roslib"/>
+  <depend package="std_msgs"/>
+  <depend package="openni"/>
+  <depend package="gazebo"/>
+  <depend package="kdl"/>
+  <depend package="tf"/>
+  <depend package="laser_assembler"/>
+  <depend package="xacro"/>
+  <depend package="convex_decomposition"/>
+  <depend package="ivcon"/>
+  <depend package="gazebo"/>
+  <depend package="gazebo_tools"/>
+  <depend package="gazebo_plugins"/>
+<export>
+  <cpp cflags="-I${prefix}/msg/cpp"/>
+</export>
+</package>
+
+

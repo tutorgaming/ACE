@@ -1,0 +1,11 @@
+<launch>  
+ <!-- start gazebo with boxes -->
+  <param name="/use_sim_time" value="true" />
+  <!--<node launch-prefix="optirun" name="gazebo" pkg="gazebo" type="gazebo" args="-u $(find angen_gazebo)/worlds/angen_furnitures.world" respawn="false" output="screen">-->
+  <node launch-prefix="optirun" name="gazebo" pkg="gazebo" type="gazebo" args="-u $(find angen_gazebo)/worlds/angen_empty.world" respawn="false" output="screen">
+</node>
+
+  <!--<param name="robot_description" command="$(find xacro)/xacro.py '$(find turtlebot_description)/urdf/turtlebot.urdf.xacro'"/>-->
+  <include file="$(find angen_turtlebot)/launch/turtlebot_1.launch"/>
+  <!--<include file="$(find angen_turtlebot)/launch/turtlebot_2.launch"/>-->
+</launch>

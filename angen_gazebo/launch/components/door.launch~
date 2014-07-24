@@ -1,0 +1,6 @@
+<?xml version ='1.0'?>
+<launch>
+    <rosparam file="$(find angen_gazebo)/config/angen_gazebo.yaml" command="load"/>	
+    <node name="multiple1" pkg="angen_apps" type="multiple" args="workroom 3.73 7.1 -3.14 1.57" /> 
+    <node name="spawn_door" pkg="gazebo" type="spawn_model" args="-z 0.06 -urdf -param door_description -model door" respawn="false" output="screen"/>
+</launch>

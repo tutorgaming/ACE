@@ -1,0 +1,10 @@
+<?xml version ='1.0'?>
+
+<launch>	
+
+    <param name="elevator_enclosure_description" command="$(find xacro)/xacro.py '$(find angen_gazebo)/urdf/actuators/elevator/elevator_enclosure.urdf.xacro'"/>
+    
+    
+
+</launch>	
+	

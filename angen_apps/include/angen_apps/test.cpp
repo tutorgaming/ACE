@@ -1,0 +1,10 @@
+#include "./angen_status_space.h"
+
+int main()
+{
+  AngenStatusSpace test;
+  //test.print_status_table();
+  test.set_actuator_status("entrance", "door", "open");
+  test.get_actuator_status("entrance", "door");
+  return 0;
+}  

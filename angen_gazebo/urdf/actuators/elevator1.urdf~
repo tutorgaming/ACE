@@ -1,0 +1,206 @@
+<?xml version="1.0" ?>
+<robot name="elevator" xmlns:xacro="http://ros.org/wiki/xacro">
+  <link name="world"/>
+  
+  <joint name="elevator_joint" type="prismatic">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <child link="elevator_block"/>
+    <limit effort="100.0" lower="0.0" upper="3.56" velocity="5"/>
+  </joint>
+  <joint name="eblock_ebase" type="fixed">
+    <axis xyz="0 0 1"/>
+    <parent link="elevator_block"/>
+    <child link="elevator_base"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <limit effort="100.0" lower="0.0" upper="3.56" velocity="5"/>
+  </joint> 
+  <joint name="ebase_eleft" type="fixed">
+    <axis xyz="0 0 1"/>
+    <origin rpy="0 0 0" xyz="0 -.97 0"/>
+    <parent link="elevator_base"/>
+    <child link="elevator_left"/>
+  </joint>  
+  <joint name="ebase_eright" type="fixed">
+    <axis xyz="0 0 1"/>
+    <origin rpy="0 0 0" xyz="0 .97 0"/>
+    <parent link="elevator_base"/>
+    <child link="elevator_right"/>
+  </joint> 
+  <joint name="ebase_eback" type="fixed">
+    <axis xyz="0 0 1"/>
+    <origin rpy="0 0 1.57" xyz="-0.97 0 0"/>
+    <parent link="elevator_base"/>
+    <child link="elevator_back"/>
+  </joint> 
+  <joint name="ebase_etop" type="fixed">
+    <axis xyz="0 0 1"/>
+    <origin rpy="0 0 0" xyz="0 0 2.94"/>
+    <parent link="elevator_base"/>
+    <child link="elevator_top"/>
+  </joint> 
+  
+  <link name="elevator_block">
+     <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <mass value="1" />
+      <inertia  ixx="1.0" ixy="0.0"  ixz="0.0"  iyy="1.0"  iyz="0.0"  izz="1.0" />
+    </inertial>
+    <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <geometry>
+        <box size="0 0 0" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <geometry>
+        <box size="0 0 0" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="elevator_block">
+    <material>Gazebo/CeilingTiled</material>
+    <dampingFactor>.005</dampingFactor>
+    <selfCollide>false</selfCollide>
+    <laserRetro>2000</laserRetro>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="elevator_base">
+     <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <mass value="30.0" />
+      <inertia  ixx="1.0" ixy="0.0"  ixz="0.0"  iyy="1.0"  iyz="0.0"  izz="1.0" />
+    </inertial>
+    <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <geometry>
+        <box size="2 2 .06" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <geometry>
+        <box size="2 2 .06" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="elevator_base">
+    <material>Gazebo/CeilingTiled</material>
+    <dampingFactor>.005</dampingFactor>
+    <selfCollide>false</selfCollide>
+    <laserRetro>2000</laserRetro>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="elevator_left">
+     <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <mass value="10.0" />
+      <inertia  ixx="1.0" ixy="0.0"  ixz="0.0"  iyy="1.0"  iyz="0.0"  izz="1.0" />
+    </inertial>
+    <visual>
+     <origin xyz="0 0 1.47" rpy="0 0 0" /> 
+      <geometry>
+        <box size="2 0.06 2.88" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 1.47" rpy="0 0 0" /> 
+      <geometry>
+        <box size="2 0.06 2.88" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="elevator_left">
+    <material>Gazebo/CeilingTiled</material>
+    <dampingFactor>.005</dampingFactor>
+    <selfCollide>false</selfCollide>
+    <laserRetro>2000</laserRetro>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="elevator_right">
+     <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <mass value="10.0" />
+      <inertia  ixx="1.0" ixy="0.0"  ixz="0.0"  iyy="1.0"  iyz="0.0"  izz="1.0" />
+    </inertial>
+    <visual>
+     <origin xyz="0 0 1.47" rpy="0 0 0" /> 
+      <geometry>
+        <box size="2 0.06 2.88" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 1.47" rpy="0 0 0" /> 
+      <geometry>
+        <box size="2 0.06 2.88" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="elevator_right">
+    <material>Gazebo/CeilingTiled</material>
+    <dampingFactor>.005</dampingFactor>
+    <selfCollide>false</selfCollide>
+    <laserRetro>2000</laserRetro>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="elevator_back">
+     <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <mass value="10.0" />
+      <inertia  ixx="1.0" ixy="0.0"  ixz="0.0"  iyy="1.0"  iyz="0.0"  izz="1.0" />
+    </inertial>
+    <visual>
+     <origin xyz="0 0 1.47" rpy="0 0 0" /> 
+      <geometry>
+        <box size="1.88 0.06 2.88" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 1.47" rpy="0 0 0" /> 
+      <geometry>
+        <box size="1.88 0.06 2.88" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="elevator_back">
+    <material>Gazebo/CeilingTiled</material>
+    <dampingFactor>.005</dampingFactor>
+    <selfCollide>false</selfCollide>
+    <laserRetro>2000</laserRetro>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+  <link name="elevator_top">
+     <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <mass value="10.0" />
+      <inertia  ixx="1.0" ixy="0.0"  ixz="0.0"  iyy="1.0"  iyz="0.0"  izz="1.0" />
+    </inertial>
+    <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <geometry>
+        <box size="2 2 .06" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <geometry>
+        <box size="2 2 .06" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="elevator_top">
+    <material>Gazebo/CeilingTiled</material>
+    <dampingFactor>.005</dampingFactor>
+    <selfCollide>false</selfCollide>
+    <laserRetro>2000</laserRetro>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  
+</robot>  

@@ -1,0 +1,13 @@
+<launch>  
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" >
+    <param name="frame_id" value="/map" />
+  </node>
+  
+  <!--- Run AMCL -->
+  <include file="$(find turtlebot_navigation)/config/amcl_turtlebot.launch" />
+
+  <!--- Run Move Base -->
+  <include file="$(find turtlebot_navigation)/config/move_base_turtlebot.launch" />
+
+</launch>

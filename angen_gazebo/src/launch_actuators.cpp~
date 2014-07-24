@@ -1,0 +1,30 @@
+#include <cstdio>
+#include "ros/ros.h"
+#include <stdlib.h>
+#include <sstream>
+
+using namespace std;
+
+int main(int argc, char ** argv)
+{
+        ros::init(argc, argv, "launch_actuators");
+	ros::NodeHandle nh;
+	
+	cout<<"SPAWNING ACTUATORS"<<endl;
+	cout<<"         SPAWNING DOORS!"<<endl;
+	string launch_doors = "xterm -e \"sh `rospack find angen_gazebo`/sh/launch_doors.sh\"";
+	system(launch_doors.c_str());
+		
+	cout<<"         SPAWNING WINDOWS!"<<endl;
+	string launch_windows = "xterm -e \"sh `rospack find angen_gazebo`/sh/launch_windows.sh\"";
+	system(launch_windows.c_str());
+	
+	
+	cout<<"SPAWNING SENSORS"<<endl;
+	cout<<"         SPAWNING OPTICAL SENSORS!"<<endl;
+	string launch_windows = "xterm -e \"sh `rospack find angen_gazebo`/sh/launch_optical_sensors.sh\"";
+	system(launch_windows.c_str());
+	
+	return 0;
+}	
+	

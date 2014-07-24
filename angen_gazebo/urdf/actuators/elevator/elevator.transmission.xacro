@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<robot name="elevator">
+  <transmission type="pr2_mechanism_model/SimpleTransmission" name="elevator_trans">
+    <actuator name="elevator_motor" />
+    <joint name="elevator_joint" />
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+  </transmission>
+</robot>
+
+

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro"
+       name="workroom_testweight">
+       
+<link name="workroom_testweight">
+     <inertial>
+      <origin xyz="1.5 7 1" rpy="0 0 0" /> 
+      <mass value="70.0" />
+      <inertia  ixx="1.0" ixy="0.0"  ixz="0.0"  iyy="100.0"  iyz="0.0"  izz="1.0" />
+    </inertial>
+    <visual>
+      <origin xyz="1.5 7 1" rpy="0 0 0" /> 
+      <geometry>
+        <box size="1 1 1" />
+      </geometry>
+    </visual>
+    <collision name="workroom_testweight">
+     <origin xyz="1.5 7 1" rpy="0 0 0" /> 
+      <geometry>
+       <box size="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="workroom_testweight">
+    <material>Gazebo/Black</material>    
+  </gazebo>
+</robot>  

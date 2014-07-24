@@ -1,0 +1,4 @@
+<launch>
+  <node name="current_pose_publisher" pkg="angen_turtlebot" type="current_pose_publisher" respawn="true" output="screen" cwd="node" ns="robot1"/>
+  <node name="current_pose_publisher" pkg="angen_turtlebot" type="current_pose_publisher" respawn="true" output="screen" cwd="node" ns="robot2"/>
+</launch>

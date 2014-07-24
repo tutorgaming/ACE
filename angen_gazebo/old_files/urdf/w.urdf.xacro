@@ -1,0 +1,206 @@
+<joint name="bedroom_bigwindow_joint" type="revolute">
+        <axis xyz="0 0 1" />
+        <parent link="world" />
+        <child link="bedroom_bigwindow_block" />
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <limit effort="100.0" lower="-1.57" upper="0" velocity="5" />
+</joint>
+
+<joint name="bedroombigwindowblock_bedroombigwindowbase" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="bedroom_bigwindow_block" />
+        <child link="bedroom_bigwindow_base" />
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <limit effort="100.0" lower="-1.57" upper="0" velocity="5" />
+</joint>    
+
+<joint name="bedroombigwindowbase_bedroombigwindowright" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="bedroom_bigwindow_base" />
+        <child link="bedroom_bigwindow_right" />
+        <origin rpy="0 0 0" xyz="${l1-h1/2} ${w1/2} ${h1}" />
+</joint>
+
+<joint name="bedroombigwindowbase_bedroombigwindowleft" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="bedroom_bigwindow_base" />
+        <child link="bedroom_bigwindow_left" />
+        <origin rpy="0 0 0" xyz="${h1/2} ${w1/2} ${h1}" />
+</joint>
+
+<joint name="bedroombigwindowbase_bedroombigwindowtop" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="bedroom_bigwindow_base" />
+        <child link="bedroom_bigwindow_top" />
+        <origin rpy="0 0 0" xyz="${l1/2} ${w1/2} ${h1 + h2}" />
+</joint>
+
+<joint name="bedroombigwindowbase_bedroombigwindowglass" type="fixed">
+        <axis xyz="0 0 1" />
+        <parent link="bedroom_bigwindow_base" />
+        <child link="bedroom_bigwindow_glass" />
+        <origin rpy="0 0 0" xyz="${l1/2} ${w1/2} ${h1}" />
+</joint>
+
+<link name="world" />
+
+<link name="bedroom_bigwindow_block">
+        <inertial>
+            <mass value="1" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3" />
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0 0 0" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0 0 0" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="bedroom_bigwindow_block">
+        <laserRetro>2000</laserRetro>
+        <dampingFactor>0.006</dampingFactor>
+        <selfCollide>false</selfCollide>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+
+<link name="bedroom_bigwindow_base">
+        <inertial>
+            <mass value="10" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3" />
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="${l1/2} ${w1/2} ${h1/2}" />
+            <geometry>
+                <box size="${l1} ${w1} ${h1}" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="${l1/2} ${w1/2} ${h1/2}" />
+            <geometry>
+                <box size="${l1} ${w1} ${h1}" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="bedroom_bigwindow_base">
+        <material>angen_gazebo/DoorWood</material>
+        <laserRetro>2000</laserRetro>
+        <dampingFactor>0.006</dampingFactor>
+        <selfCollide>false</selfCollide>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo> 
+
+<link name="bedroom_bigwindow_right">
+        <inertial>
+            <mass value="10" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3" />
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 ${h2 / 2}" />
+            <geometry>
+                <box size="${l2} ${w2} ${h2}" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 ${h2 / 2}" />
+            <geometry>
+                <box size="${l2} ${w2} ${h2}" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="bedroom_bigwindow_right">
+        <material>angen_gazebo/DoorWood</material>
+        <laserRetro>2000</laserRetro>
+        <dampingFactor>0.006</dampingFactor>
+        <selfCollide>false</selfCollide>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo> 
+
+<link name="bedroom_bigwindow_left">
+        <inertial>
+            <mass value="10" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3" />
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 ${h2 / 2}" />
+            <geometry>
+                <box size="${l2} ${w2} ${h2}" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 ${h2 / 2}" />
+            <geometry>
+                <box size="${l2} ${w2} ${h2}" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="bedroom_bigwindow_left">
+        <material>angen_gazebo/DoorWood</material>
+        <laserRetro>2000</laserRetro>
+        <dampingFactor>0.006</dampingFactor>
+        <selfCollide>false</selfCollide>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>    
+    
+<link name="bedroom_bigwindow_top">
+        <inertial>
+            <mass value="10" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3" />
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 ${h1/2}" />
+            <geometry>
+                <box size="${l1} ${w1} ${h1}" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 ${h1/2}" />
+            <geometry>
+                <box size="${l1} ${w1} ${h1}" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="bedroom_bigwindow_top">
+        <material>angen_gazebo/DoorWood</material>
+        <laserRetro>2000</laserRetro>
+        <dampingFactor>0.006</dampingFactor>
+        <selfCollide>false</selfCollide>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo> 
+    
+<link name="bedroom_bigwindow_glass">
+        <inertial>
+            <mass value="10" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3" />
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 ${h2/2}" />
+            <geometry>
+                <box size="${l1-2*h1} 0.012 ${h2}" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 ${h2/2}" />
+            <geometry>
+                <box size="${l1-2*h1} 0.012 ${h2}" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="bedroom_bigwindow_glass">
+        <material>Gazebo/BlueTransparent</material>
+        <laserRetro>2000</laserRetro>
+        <dampingFactor>0.006</dampingFactor>
+        <selfCollide>false</selfCollide>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>  

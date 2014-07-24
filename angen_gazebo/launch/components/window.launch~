@@ -1,0 +1,8 @@
+<?xml version ='1.0'?>
+<launch>	
+
+    <param name="window_description" command="$(find xacro)/xacro.py '$(find angen_gazebo)/urdf/actuators/window/window.urdf.xacro'"/>
+     
+    <node name="spawn_elevator" pkg="gazebo" type="spawn_model" args="-urdf -param window_description -model window2" respawn="false" output="screen"/>
+
+</launch>

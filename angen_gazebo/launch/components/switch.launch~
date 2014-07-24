@@ -1,0 +1,7 @@
+<?xml version ='1.0'?>
+
+<launch>
+
+       <param name="switch_description" command="$(find xacro)/xacro.py '$(find angen_gazebo)/urdf/sensors/optical_switch.urdf.xacro'"/>
+       
+</launch>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro"
+       name="WCS_lr">
+       
+<link name="WCS_lr">
+     <inertial>
+      <origin xyz="10.765 5.3 .7495" rpy="0 0 0" /> 
+      <mass value="2.0" />
+      <inertia  ixx="1.0" ixy="0.0"  ixz="0.0"  iyy="100.0"  iyz="0.0"  izz="1.0" />
+    </inertial>
+    <visual>
+      <origin xyz="10.765 5.3 .7495" rpy="0 0 0" /> 
+      <geometry>
+        <box size="0.02 0.02 0.001" />
+      </geometry>
+    </visual>
+    <collision name="WCS_lr">
+     <origin xyz="10.765 5.3 .7495" rpy="0 0 0" /> 
+      <geometry>
+       <box size="0.02 0.02 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="WCS_lr">
+    <material>Gazebo/Black</material>    
+  </gazebo>
+       
+<gazebo reference="WCS_lr">
+      <selfCollide>true</selfCollide>
+      <sensor:contact name="WCS_lr">
+        <geom>WCS_lr_geom</geom>
+        <updateRate>100.0</updateRate>
+        <controller:gazebo_ros_bumper name="gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>100.0</updateRate>
+          <bumperTopicName>/angen_contact/WCS/livingroom</bumperTopicName>
+          <interface:bumper name="contact_bumper_iface" />
+        </controller:gazebo_ros_bumper>
+      </sensor:contact>
+    </gazebo>
+</robot>

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro"
+       name="camera_entranceway">
+
+<gazebo reference="camera_entranceway"> 
+      <sensor:camera name="camera_entranceway">
+        <imageSize>640 480</imageSize>
+        <imageFormat>R8G8B8</imageFormat>
+        <hfov>90</hfov>
+        <nearClip>0.01</nearClip>
+        <farClip>100</farClip>
+        <updateRate>20.0</updateRate>
+        <controller:gazebo_ros_camera name="camera_entranceway_controller" plugin="libgazebo_ros_camera.so">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>20.0</updateRate>
+          <imageTopicName>angen_cameras/entranceway/image</imageTopicName>
+          <frameName>camera_entranceway</frameName>
+          <interface:camera name="camera_entranceway_iface" />
+        </controller:gazebo_ros_camera>
+      </sensor:camera>
+      <turnGravityOff>true</turnGravityOff>
+      <material>Gazebo/WhiteEmissive</material>   
+  </gazebo>
+
+<link name="world"/>
+  <joint name="camera_pose" type="fixed">
+    <axis xyz="1 0 0"/>
+    <parent link="world"/>
+    <origin rpy="1.570 0" xyz="0 0 0.2"/>
+    <child link="camera"/>
+    <dynamics damping="100" friction="1000"/>
+  </joint>
+  
+<link name="camera">
+     <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <mass value="0.3" />
+      <inertia  ixx="0.3" ixy="0.0"  ixz="0.0"  iyy="0.001"  iyz="0.0"  izz="0.05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <geometry>
+        <box size=".025 .1 .2" />
+      </geometry>
+    </visual>
+    <collision name="camera">
+     <origin xyz="0 0 0" rpy="0 0 0" /> 
+      <geometry>
+       <box size=".025 .1 .2" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

@@ -1,0 +1,28 @@
+#include "ros/ros.h"
+#include "std_msgs/String.h"
+#include "nav_msgs/Odometry.h"
+#include "angen_apps/angen_actuator_controls.h"
+
+using namespace actuator_controls;
+using namespace std;
+
+void ElevatorPoseCallback(const nav_msgs::Odometry::ConstPtr& epc)
+{
+  AngenActuatorControls ac;
+  float z_diff = 3.56 - epc.pose.pose.position.z;
+  if(z_diff > abs(0.001))
+     ac.elevator_control(z_diff);
+  else
+     exit(0);   
+  //ros::Duration(.25).sleep();
+}
+
+int main(int argc, char **argv)
+{
+
+  ros::init(argc, argv, "elevator_control");
+  ros::NodeHandle nh;
+  ros::Subscriber ec_sub = nh.subscribe("elevator_position", 4, ElevatorPoseCallback);
+  ros::spin();
+  return 0;
+}

@@ -1,0 +1,10 @@
+<launch>
+  <group ns="robot1">
+  <node name="current_pose_publisher" pkg="angen_turtlebot" type="current_pose_publisher" respawn="true" output="screen" cwd="node"/>
+  <node name="key_based_nav" pkg="angen_turtlebot" type="key_based_nav" respawn="true" output="screen" cwd="node"/>
+</group>
+  <group ns="robot2">
+  <node name="current_pose_publisher" pkg="angen_turtlebot" type="current_pose_publisher" respawn="true" output="screen" cwd="node"/>
+  <node name="key_based_nav" pkg="angen_turtlebot" type="key_based_nav" respawn="true" output="screen" cwd="node"/>
+</group>
+</launch>

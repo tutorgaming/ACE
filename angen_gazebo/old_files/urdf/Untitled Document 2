@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<robot name="door_entrance">
+  <link name="world"/>
+  <joint name="link_joint_entrance" type="prismatic">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <limit effort="100.0" lower="0" upper="1.9" velocity="5"/>
+    <child link="link_entrance"/>
+  </joint>
+  <link name="link_entrance">
+    <inertial>
+      <mass value="20"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-1 0 .025"/>
+      <geometry>
+        <box size="1.94 1.88 0.05"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0 0 0"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="link_entrance">
+    <material>Gazebo/RustySteel</material>
+    <dampingFactor>0.005</dampingFactor>
+    <selfCollide>true</selfCollide>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+</robot>

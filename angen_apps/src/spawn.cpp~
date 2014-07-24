@@ -1,0 +1,180 @@
+#include "ros/ros.h"
+#include "std_msgs/String.h"
+#include "gazebo/SpawnModel.h"
+#include "gazebo/DeleteModel.h"
+#include "gazebo/ApplyJointEffort.h"
+#include "geometry_msgs/Pose.h"
+#include <iostream>
+#include <sstream>
+#include <tinyxml.h>
+#include <cstdlib>
+#include <set>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
+#include "ros/duration.h"
+
+//SPECIFY THE STACK PATH HERE
+std::string stack_path = std::string("/home/angenuser/ros_workspace/angen_cognitive_environment");
+
+
+class actuator_controller
+ {
+   private:
+    std::set<std::string> _modelsList;
+        
+   public:
+    void light_on(std::string , std:: string);
+    void light_off(std::string );
+    //void door_open(std::string );
+    //void door_close(std::string );    
+ };
+  
+void actuator_controller::light_on(std::string xml_filename, std::string model_name1)
+     {
+        ros::NodeHandle nh("");
+	ros::service::waitForService("gazebo/spawn_urdf_model");
+	ros::ServiceClient spawnModelClient = nh.serviceClient<gazebo::SpawnModel>("gazebo/spawn_urdf_model");
+	gazebo::SpawnModel spawnModel;
+	spawnModel.request.model_name = model_name1;
+
+	TiXmlDocument xml_in(xml_filename);
+	xml_in.LoadFile();
+	std::ostringstream stream;
+	stream << xml_in;
+	spawnModel.request.model_xml = stream.str();
+	
+	if(spawnModelClient.call(spawnModel))
+	 {
+	   std::cout << "spawned model" << std::endl;
+	   actuator_controller::_modelsList.insert(spawnModel.request.model_name);
+	 }
+	else
+	{
+	 std::cout << "failed to spawn" << std::endl;
+	}
+     }
+     
+void actuator_controller::light_off(std::string model_name1)
+     {
+       ros::NodeHandle nh("");
+       ros::service::waitForService("gazebo/delete_model");
+       ros::ServiceClient deleteModelClient = nh.serviceClient<gazebo::DeleteModel>("gazebo/delete_model");
+       gazebo::DeleteModel deleteModel;
+       deleteModel.request.model_name = model_name1;
+       
+       if(deleteModelClient.call(deleteModel))
+        {
+         std::cout << "deleted model "<< model_name1 << std::endl;
+        }
+       else
+        {
+         std::cout << "failed to delete " << model_name1 << std::endl;
+        }
+     }
+
+/*void actuator_controller::door_open(std::string model_name1)
+     {
+       ros::NodeHandle nh("");
+       ros::service::waitForService("gazebo/apply_joint_effort");
+       ros::ServiceClient dooropenClient = nh.serviceClient<gazebo::ApplyJointEffort>("gazebo/apply_joint_effort");
+       gazebo::ApplyJointEffort dooropen;
+       dooropen.request.joint_name = model_name1;
+       dooropen.request.effort = 1;
+       dooropen.request.duration(10000000000);
+       dooropenClient.call(dooropen);
+       ros::Rate r(2);
+       r.sleep();
+       dooropen.request.effort = -1;
+       if(dooropenClient.call(dooropen))
+        {
+         std::cout << "door is open "<< model_name1 << std::endl;
+        }
+       else
+        {
+         std::cout << "problem with door opening" << model_name1 << std::endl;
+        }
+      }*/
+int sumofascii( std::string );
+	
+int main(int argc, char **argv)
+ {
+   ros::init(argc, argv, "actuator_controller");  
+   actuator_controller ac;
+   std::string room = std::string(argv[3]);
+   std::string status = std::string(argv[2]);
+   std::string file, light_name, object, door_name;
+   int room_no = sumofascii(room);
+   switch(room_no)
+    {
+      case 1094:
+       file = std::string(stack_path) + std::string("/angen_gazebo/urdf/actuators/lights/light_livingroom.urdf");
+       light_name = std::string("bulb_lr");
+       object = std::string("light_lr");
+       door_name = std::string("door_lr");
+       break;
+      case 896:
+       file = std::string(stack_path) + std::string("/angen_gazebo/urdf/actuators/lights/light_workroom.urdf");
+       light_name = std::string("bulb_wr");
+       object = std::string("light_wr");
+       door_name = std::string("door_wr");
+       break;
+      case 742:
+       file = std::string(stack_path) + std::string("/angen_gazebo/urdf/actuators/lights/light_kitchen.urdf");
+       light_name = std::string("bulb_k");
+       object = std::string("light_k");
+       door_name = std::string("door_k");
+       break;
+      case 744:
+       file = std::string(stack_path) + std::string("/angen_gazebo/urdf/actuators/lights/light_bedroom.urdf");
+       light_name = std::string("bulb_ber");
+       object = std::string("light_ber");
+       door_name = std::string("door_ber");
+       break;
+      case 860:
+       file = std::string(stack_path) + std::string("/angen_gazebo/urdf/actuators/lights/light_bathroom.urdf");
+       light_name = std::string("bulb_bar");
+       object = std::string("light_bar");
+       door_name = std::string("door_bar");
+       break;
+      case 650:
+       file = std::string(stack_path) + std::string("/angen_gazebo/urdf/actuators/lights/light_closet.urdf");
+       light_name = std::string("bulb_c");
+       object = std::string("light_c");
+       door_name = std::string("door_c");
+       break;
+      case 712:
+       file = std::string(stack_path) + std::string("/angen_gazebo/urdf/actuators/lights/light_balcony.urdf");
+       light_name = std::string("bulb_bac");
+       object = std::string("light_bac");
+       door_name = std::string("door_bac");
+       break;
+      case 848:
+       door_name = std::string("door_e");
+      default:
+       break;
+   }
+   if (sumofascii(status) == 221)
+    ac.light_on(file, light_name);
+   if (sumofascii(status) == 315)
+    {
+     ac.light_off(light_name);
+     ac.light_off(object);
+    }
+   /*if (sumofascii(status)== 434)
+    ac.door_open(door_name);*/
+   usleep(1000000);
+   return 0;
+ }
+
+ int sumofascii( std::string room)
+  {
+   int Sum,Index;
+   Sum=0; 
+   for(Index=0;Index<strlen(room.c_str());Index++)
+    {
+      Sum+=(room.c_str()[Index]);
+    }
+    return Sum;
+  } 
+

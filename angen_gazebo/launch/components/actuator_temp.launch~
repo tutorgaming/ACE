@@ -1,0 +1,6 @@
+<?xml version ='1.0'?>
+
+<launch>
+       <param name="actuator_description1" command="$(find xacro)/xacro.py '$(find angen_gazebo)/urdf/actuators/door/door.transmission.xacro'"/>
+       <param name="actuator_description" command="$(find xacro)/xacro.py '$(find angen_gazebo)/urdf/actuators/door/door.urdf.xacro'"/>
+</launch>

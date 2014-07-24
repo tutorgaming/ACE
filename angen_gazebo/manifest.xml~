@@ -1,0 +1,27 @@
+<package>
+  <description brief="angen_gazebo" />
+  <author>Prasanna Kumar</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/gazebo_tutorial</url>
+  <depend package="gazebo"/>
+  <export>
+    <gazebo plugin_path="${prefix}/lib" gazebo_media_path="${prefix}" />
+  </export>
+  
+  <depend package="tf"/>
+
+  <depend package="laser_assembler"/>
+    <depend package="xacro"/>
+  <depend package="convex_decomposition"/>
+  <depend package="ivcon"/>
+  <depend package="gazebo"/>
+  <depend package="gazebo_tools"/>
+  <depend package="gazebo_plugins"/>
+ <depend package="pr2_controller_manager"/>
+  <platform os="ubuntu" version="9.04"/>
+  <platform os="ubuntu" version="9.10"/>
+  <platform os="ubuntu" version="10.04"/>
+</package>
+
+

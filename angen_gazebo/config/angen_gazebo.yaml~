@@ -1,0 +1,10 @@
+x_world_offset: -5
+y_world_offset: -5
+actuator_files_path: /home/angenuser/ros_workspace/angen_cognitive_environment/angen_gazebo/urdf/actuators
+sensor_files_path: /home/angenuser/ros_workspace/angen_cognitive_environment/angen_gazebo/urdf/sensors
+elevator_file_path: /home/angenuser/ros_workspace/angen_cognitive_environment/angen_gazebo/urdf/actuators/elevator
+door_open_yaw: -0.928
+door_close_yaw: 1.569
+window_open_yaw: 0
+window_close_yaw: 1.57
+gap_between_floors: 6

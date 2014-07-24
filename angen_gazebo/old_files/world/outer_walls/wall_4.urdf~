@@ -1,0 +1,23 @@
+<robot name="sw_4" static="true">
+  <link name="sw_4">
+     <inertial>
+      <origin xyz="8.2 6.15 0" rpy="0 0 0" /> 
+      <mass value="10.0" />
+      <inertia  ixx="1.0" ixy="0.0"  ixz="0.0"  iyy="100.0"  iyz="0.0"  izz="1.0" />
+    </inertial>
+    <visual>
+      <origin xyz="8.2 6.15 0" rpy="0 0 0" /> 
+      <geometry>
+        <box size="4 0.3 4" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="8.2 6.15 0" rpy="0 0 0" /> 
+      <geometry>
+       <box size="4 0.3 4" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="sw_4">
+    <material>Gazebo/White</material>
+</robot>

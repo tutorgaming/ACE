@@ -1,0 +1,6 @@
+<?xml version ='1.0'?>
+
+<launch>
+       <param name="window_transmission" command="$(find xacro)/xacro.py '$(find angen_gazebo)/urdf/actuators/window/window.transmission.xacro'"/>
+       <param name="window_description" command="$(find xacro)/xacro.py '$(find angen_gazebo)/urdf/actuators/window/window.urdf.xacro'"/>
+</launch>

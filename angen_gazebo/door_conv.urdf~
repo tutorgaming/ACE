@@ -1,0 +1,41 @@
+<?xml version ='1.0'?>
+<gazebo version='1.0'>
+<robot name="door_balcony">
+
+<link name="world"/>
+
+<link name='link_bac' gravity='1' self_collide='0' kinematic='0' mass='10'>
+        <origin pose='0 0 0 0 0 0'/>
+        <collision name='link_bac_geom' laser_retro='0.000000'>
+          <origin pose='0 0 0 0.000000 -0.000000 0.000000'/>
+          <geometry>
+            <box size='0 0 0'/>
+          </geometry>
+          <surface>
+            <friction>
+              <ode mu='-1.000000' mu2='-1.000000' fdir1='0.000000 0.000000 0.000000' slip1='0.000000' slip2='0.000000'/>
+            </friction>
+            <bounce restitution_coefficient='0.000000' threshold='100000.000000'/>
+            <contact>
+             <ode soft_cfm='0.000000' soft_erp='0.200000' kp='1000000000000.000000' kd='1.000000' max_vel='100.000000' min_depth='0.001000'/>
+            </contact>
+          </surface>
+        </collision>
+        <visual name='link_bac_geom_visual' cast_shadows='1' laser_retro='0.000000' transparency='0.000000'>
+          <origin pose='0.5 0.03 1.06 0.000000 -0.000000 0.000000'/>
+          <geometry>
+            <box size='1 0.06 2'/>
+          </geometry>
+          <material script='Gazebo/White'/>
+        </visual>
+</link>
+
+<joint type="revolute" name="link_joint_balcony">
+    <pose>10.645 5.85 0 0 0 1.57</pose>
+    <child>link_bac</child>
+    <parent>world</parent>
+    <axis>
+      <xyz>0 0 1</xyz>
+      <limit effort='100.0' lower='0' upper='3.14' velocity='5'/>
+    </axis>
+  </joint>

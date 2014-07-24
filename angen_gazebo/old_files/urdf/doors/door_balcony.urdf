@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<robot name="door_balcony">
+  <link name="world"/>
+  <joint name="link_joint_balcony" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 1.57" xyz="10.645 5.85 0"/>
+    <limit effort="100.0" lower="0" upper="3.14" velocity="5"/>
+    <child link="link_balcony"/>
+  </joint>
+  <link name="link_balcony">
+    <inertial>
+      <mass value="20"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.5 0.03 1.06"/>
+      <geometry>
+        <box size="1 0.06 2"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0 0 0"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="link_balcony">
+    <material>Gazebo/RustySteel</material>
+    <laserRetro>2000</laserRetro>
+    <dampingFactor>0.006</dampingFactor>
+    <selfCollide>false</selfCollide>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+</robot>

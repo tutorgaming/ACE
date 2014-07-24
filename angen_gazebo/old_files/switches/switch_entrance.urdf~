@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<robot name="switch">
+    <!-- Links -->
+    <link name="switch_link1">
+        <inertial>
+            <mass value="0.1" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.005 0.03 0.03" />
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0 0 0" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="switch_link2">
+        <inertial>
+            <mass value="0.1" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.005 0.03 0.03" />
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.005 0.03 0.03" />
+            </geometry>
+        </collision>
+    </link>
+    <!-- Joints -->
+    <joint name="switch_joint" type="fixed">
+        <origin xyz="0.05 0 0" rpy="0 0 0" />
+        <parent link="world" />
+        <child link="switch_link2" />
+    </joint>
+    <gazebo reference="switch_link1">
+        <sensor:ray name="switch_link1">
+            <resRange>0.1</resRange>
+            <rayCount>2</rayCount>
+            <rangeCount>2</rangeCount>
+            <laserCount>1</laserCount>
+            <origin>0.0 0.0 0.0</origin>
+            <displayRays>true</displayRays>
+            <minAngle>-0.0</minAngle>
+            <maxAngle>0.0</maxAngle>
+            <minRange>0.000001</minRange>
+            <maxRange>0.5</maxRange>
+            <updateRate>1.0</updateRate>
+            <horizontalRayCount>2</horizontalRayCount>
+            <horizontalRangeCount>2</horizontalRangeCount>
+            <horizontalMinAngle>-0.0</horizontalMinAngle>
+            <horizontalMaxAngle>0.0</horizontalMaxAngle>
+            <controller:gazebo_ros_laser name="gazebo_ros_base_laser_link_controller" plugin="libgazebo_ros_laser.so">
+                <gaussianNoise>0.0</gaussianNoise>
+                <alwaysOn>true</alwaysOn>
+                <updateRate>1.0</updateRate>
+                <topicName>s_entrance_ray</topicName>
+                <frameName>entrance_s_frame</frameName>
+                <interface:laser name="gazebo_ros_base_laser_iface" />
+            </controller:gazebo_ros_laser>
+        </sensor:ray>
+        <material>Gazebo/Blue</material>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <gazebo reference="switch_link2">
+    	<material>Gazebo/Blue</material>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+</robot>

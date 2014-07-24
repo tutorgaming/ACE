@@ -1,0 +1,8 @@
+elevator:
+  type: robot_mechanism_controllers/JointPositionController
+  joint: elevator_joint
+  pid:
+    p: 0.01
+    i: 0.01
+    d: 0.01
+    i_clamp: 1

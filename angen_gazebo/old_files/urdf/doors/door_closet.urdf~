@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<robot name="door_closet">
+  <link name="world"/>
+  <joint name="link_joint_c" type="revolute">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 1.57" xyz="5.49 2 0"/>
+    <limit effort="100.0" lower="0" upper="1.57" velocity="5"/>
+    <child link="link_c"/>
+  </joint>
+  <link name="link_c">
+    <inertial>
+      <mass value="20"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.3 0.03 1.06"/>
+      <geometry>
+        <box size="0.6 0.06 2"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0 0 0"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="link_c">
+    <material>Gazebo/RustySteel</material>
+    <laserRetro>2000</laserRetro>
+    <dampingFactor>0.005</dampingFactor>
+    <selfCollide>true</selfCollide>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+</robot>

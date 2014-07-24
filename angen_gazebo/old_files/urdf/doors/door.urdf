@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+  <link name="world"/>
+  <joint name="link_joint_wr" type="prismatic">
+    <axis xyz="0 0 -1"/>
+    <parent link="world"/>
+    <origin rpy="0 0 1.57" xyz="3.72 7.1 .07"/>
+    <limit effort="100.0" lower="0" upper="3.14" velocity="5"/>
+    <child link="link_wr"/>
+  </joint>
+  <link name="link_wr">
+    <inertial>
+      <mass value="20"/>
+      <origin xyz="3.75 7.1 .07"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="3"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.5 0.03 1"/>
+      <geometry>
+        <box size="1 0.06 2"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0 0 0"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="link_wr">
+    <material>Gazebo/RustySteel</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+</robot>

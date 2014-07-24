@@ -1,0 +1,4 @@
+ace_actuator_status:
+  door: {workroom: close, bedroom: close, kitchen: close, bathroom: close, closet: close, balcony: close, entrance: close}
+  window: {workroom: close, bedroom: close, kitchen: close, livingroom: close}
+  light: {workroom: offf, bedroom: offf, kitchen: offf, bathroom: offf, closet: offf, balcony: offf, livingroom: offf}

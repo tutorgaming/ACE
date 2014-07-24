@@ -1,0 +1,51 @@
+#include "ros/ros.h"
+#include "geometry_msgs/PoseWithCovarianceStamped.h"
+#include "ros/ros.h"
+#include <iostream>
+#include "move_base_msgs/MoveBaseActionGoal.h"
+#include <ros/callback_queue.h>
+
+
+#define initialpx 0.267
+#define initialpy -0.665
+#define initialqz -0.232
+#define initialqw 0.973
+
+using namespace std;
+using namespace ros;
+
+int main(int argc, char** argv)
+{
+	init(argc,argv,"setup");
+	NodeHandle g;
+
+	/* Setting iniatial pose*/
+	Publisher initial_pose;
+	initial_pose = g.advertise<geometry_msgs/PoseWithCovarianceStamped>("initialpose", 1);
+	geometry_msgs::PoseWithCovarianceStamped initial;
+
+	initial.pose.pose.position.x = initialpx;
+	initial.pose.pose.position.y = initialpy;
+	initial.pose.pose.position.z = 0.0;
+	initial.pose.pose.orientation.x = 0.0;
+	initial.pose.pose.orientation.y = 0.0;
+	initial.pose.pose.orientation.z = initialqz;
+	initial.pose.pose.orientation.w = initialqw;
+		
+	initial.header.seq = 1;
+	initial.header.frame_id = "/map";
+	initial.header.time = ros::Time::now();
+
+	initial_pose.publish(initial);
+
+	return 0;
+
+}
+	
+	
+	
+	
+	
+	
+	
+

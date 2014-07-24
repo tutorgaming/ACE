@@ -1,0 +1,13 @@
+<?xml version ='1.0'?>
+
+<launch>
+
+  <param name="/use_sim_time" value="true" />
+  
+  <node name="gazebo" pkg="gazebo" type="gazebo" args="-u $(find angen_gazebo)/worlds/angen_multiple_floors.world" respawn="false" output="screen" />
+  <node name="gazebo_gui" pkg="gazebo" type="gui" />
+ 
+  
+  <rosparam command="load" file="$(find angen_gazebo)/config/angen_gazebo.yaml" />
+  
+</launch>

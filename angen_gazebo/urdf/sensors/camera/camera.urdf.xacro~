@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<robot name="${room_name}_camera" xmlns:xacro="http://ros.org/wiki/xacro" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:gazebo="http://playerstage.sourceforge.net/gazebo/xmlschema/#gz" xmlns:model="http://playerstage.sourceforge.net/gazebo/xmlschema/#model" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:body="http://playerstage.sourceforge.net/gazebo/xmlschema/#body" xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom" xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#joint" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" xmlns:rendering="http://playerstage.sourceforge.net/gazebo/xmlschema/#rendering" xmlns:renderable="http://playerstage.sourceforge.net/gazebo/xmlschema/#renderable" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:physics="http://playerstage.sourceforge.net/gazebo/xmlschema/#physics">
+    <property name="room_name" value="entrance" />
+    <property name="x_position" value="6.1" />
+    <property name="y_position" value="8.2" />
+    <property name="z_position" value="2.3" />
+    <property name="x_world_offset" value="-5" />
+    <property name="y_world_offset" value="-5" />
+    <property name="yaw" value="-2.355" />
+    <property name="roll" value="0" />
+    <property name="pitch" value="0" />
+    <link name="world" />
+    <joint name="camera_joint" type="fixed">
+        <axis xyz="1 0 0" />
+        <parent link="world" />
+        <origin xyz="${x_position + x_world_offset} ${y_position + y_world_offset} ${z_position}" rpy="${roll} ${pitch} ${yaw+3.14}" />
+        <child link="camera_block" />
+    </joint>
+    <link name="camera_block">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0.3" />
+            <inertia ixx="0.3" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size=".025 .1 .2" />
+            </geometry>
+        </visual>
+        <collision name="camera_block">
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size=".025 .1 .2" />
+            </geometry>
+        </collision>
+    </link>
+    <gazebo reference="camera_block">
+        <sensor:camera name="camera">
+            <imageFormat>R8G8B8</imageFormat>
+            <imageSize>640 480</imageSize>
+            <hfov>60</hfov>
+            <nearClip>0.05</nearClip>
+            <farClip>3</farClip>
+            <updateRate>20</updateRate>
+            <baseline>0.1</baseline>
+            <controller:gazebo_ros_openni_kinect name="kinect_camera_controller" plugin="libgazebo_ros_openni_kinect.so">
+                <alwaysOn>true</alwaysOn>
+                <updateRate>20</updateRate>
+                <imageTopicName>/${room_name}_camera/image_raw</imageTopicName>
+                <cameraInfoTopicName>/${room_name}_camera/camera_info</cameraInfoTopicName>
+                <pointCloudTopicName>/${room_name}_camera/depth/points</pointCloudTopicName>
+                <frameName>${room_name}_camera</frameName>-->
+                <robotNamespace>camera</robotNamespace>
+                <distortion_k1>0.0</distortion_k1>
+                <distortion_k2>0.0</distortion_k2>
+                <distortion_k3>0.0</distortion_k3>
+                <distortion_t1>0.0</distortion_t1>
+                <distortion_t2>0.0</distortion_t2>
+            </controller:gazebo_ros_openni_kinect>
+        </sensor:camera>
+        <material>Gazebo/Red</material>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+</robot>

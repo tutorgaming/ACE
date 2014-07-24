@@ -1,0 +1,64 @@
+Background\ ColorR=0.678431
+Background\ ColorG=0.678431
+Background\ ColorB=0.678431
+Fixed\ Frame=/base_link
+Target\ Frame=<Fixed Frame>
+Grid.Alpha=0.5
+Grid.Cell\ Size=1
+Grid.ColorR=0
+Grid.ColorG=0
+Grid.ColorB=0
+Grid.Enabled=1
+Grid.Line\ Style=0
+Grid.Line\ Width=0.03
+Grid.Normal\ Cell\ Count=0
+Grid.OffsetX=0
+Grid.OffsetY=0
+Grid.OffsetZ=0
+Grid.Plane=0
+Grid.Plane\ Cell\ Count=10
+Grid.Reference\ Frame=<Fixed Frame>
+Robot\ Model.Alpha=1
+Robot\ Model.Collision\ Enabled=0
+Robot\ Model.Enabled=1
+Robot\ Model.Robot\ Description=robot_description
+Robot\ Model.TF\ Prefix=
+Robot\ Model.Update\ Interval=0
+Robot\ Model.Visual\ Enabled=1
+Robot\:\ Robot\ Model\ Link\ base_linkShow\ Axes=1
+Robot\:\ Robot\ Model\ Link\ base_linkShow\ Trail=1
+Robot\:\ Robot\ Model\ Link\ laser_modelShow\ Axes=0
+Robot\:\ Robot\ Model\ Link\ laser_modelShow\ Trail=0
+Robot\:\ Robot\ Model\ Link\ second_linkShow\ Axes=0
+Robot\:\ Robot\ Model\ Link\ second_linkShow\ Trail=0
+Robot\:\ Robot\ Model\ Link\ third_linkShow\ Axes=0
+Robot\:\ Robot\ Model\ Link\ third_linkShow\ Trail=0
+TF.All\ Enabled=1
+TF.Enabled=1
+TF.Frame\ Timeout=15
+TF.Show\ Arrows=1
+TF.Show\ Axes=1
+TF.Show\ Names=1
+TF.Update\ Interval=0
+Tool\ 2D\ Nav\ GoalTopic=goal
+Tool\ 2D\ Pose\ EstimateTopic=initialpose
+Camera\ Type=rviz::OrbitViewController
+Camera\ Config=0.986145 1.61803 5.33475 0 0 0
+Property\ Grid\ State=selection=Grid.Enabled.Grid.Reference Frame;expanded=.Global Options,TF.Enabled,TF./base_link/base_link,TF./laser_model/laser_model,TF./second_link/second_link,TF./third_link/third_link,TF.Enabled.TF.Tree,TF./base_linkTree/base_link,TF./second_linkTree/second_link,TF./third_linkTree/third_link,TF./laser_modelTree/laser_model,Robot Model.Enabled,Robot: Robot Model Link base_linkbase_link,Grid.Enabled;scrollpos=0,0;splitterpos=141,270;ispageselected=1
+[Display0]
+Name=TF
+Package=rviz
+ClassName=rviz::TFDisplay
+[Display1]
+Name=Robot Model
+Package=rviz
+ClassName=rviz::RobotModelDisplay
+[Display2]
+Name=Grid
+Package=rviz
+ClassName=rviz::GridDisplay
+[TF.]
+base_linkEnabled=1
+laser_modelEnabled=1
+second_linkEnabled=1
+third_linkEnabled=1

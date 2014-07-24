@@ -1,0 +1,73 @@
+#include "ros/ros.h"
+#include "robot_navigation/service1_param.h"
+#include "robot_navigation/service2_param.h"
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+
+int main(int argc, char **argv)
+{
+  	ros::init(argc, argv, "node");
+
+	ros::NodeHandle n;
+ 	ros::ServiceClient client1 = n.serviceClient<robot_navigation::service1_param>("service1");
+  	ros::ServiceClient client2 = n.serviceClient<robot_navigation::service2_param>("service2");
+  	robot_navigation::service1_param param1;
+  	robot_navigation::service2_param param2;
+  	
+  	if (client1.call(param1))
+  	{
+  		if(param1.response.Status) ROS_INFO("PROCESS ENDED SUCCESSFULLY");
+  		else ROS_ERROR("PROCESS ENDED UNSUCCESSFULLY");
+  	}
+  	else
+  	{
+    		ROS_ERROR("Failed to call service Juper1: Navigationar");
+  		return 1;
+  	}
+  	
+  	switch(param1.response.Key)
+  	{ 
+  	 case 'a':
+  	
+  		param2.request.wait_time = 3;
+  		param2.request.will_shake = false;
+  		param2.request.is_straight_line = true;
+  		break;
+  		
+  	 case 'b':
+  		
+  		param2.request.wait_time = 3;
+  		param2.request.will_shake = true;
+  		param2.request.is_straight_line = true;
+  		break;
+  		
+  	 case 'c':
+  		
+  		param2.request.wait_time = 0;
+  		param2.request.will_shake = false;
+  		param2.request.is_straight_line = false;
+  		break;	
+  		
+  	 case 'd':
+  		
+  		param2.request.wait_time = 3;
+  		param2.request.will_shake = false;
+  		param2.request.is_straight_line = false;
+  		
+  	}	
+  	
+  	if (client2.call(param2))
+  	{
+  		if(param2.response.Status) ROS_INFO("PROCESS ENDED SUCCESSFULLY");
+  		else ROS_ERROR("PROCESS ENDED UNSUCCESSFULLY");
+  	}
+  	else
+  	{
+    		ROS_ERROR("Failed to call service Juper2: Handoverar");
+  		return 1;
+  	}
+
+  	return 0;
+}

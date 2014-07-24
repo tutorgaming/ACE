@@ -1,0 +1,50 @@
+<launch>
+
+  <param name="/use_sim_time" value="true" />
+  <node launch-prefix="optirun" name="gazebo" pkg="gazebo" type="gazebo" args="-u $(find angen_gazebo)/worlds/angen_empty.world" respawn="false" output="screen">
+<remap from="/robot1/scan" to="/robot1/peis_scan" />
+<remap from="/robot1/odom" to="/robot1/peis_odom" />
+<remap from="/robot2/scan" to="/robot2/peis_scan" />
+<remap from="/robot2/odom" to="/robot2/peis_odom" />
+
+</node>
+
+
+  <param name="robot_description"
+    command="$(find xacro)/xacro.py $(find turtlebot_description)/urdf/turtlebot.urdf.xacro" />
+
+ <!-- BEGIN ROBOT 1-->
+  <group ns="robot1">
+    <param name="tf_prefix" value="robot1_tf" />
+    <include file="$(find angen_turtlebot)/launch/final_r1.launch" >
+      <arg name="init_pose" value="-x 9 -y 5 -z 0.05" />
+      <arg name="robot_name"  value="Robot1" />
+    <param name="amcl/initial_pose_x" value="9" />
+    <param name="amcl/initial_pose_y" value="5" />
+    </include>
+  </group>
+
+
+ <!-- BEGIN ROBOT 1-->
+  <group ns="robot2">
+    <param name="tf_prefix" value="robot2_tf" />
+    <include file="$(find angen_turtlebot)/launch/final_r1.launch" >
+      <arg name="init_pose" value="-x 9 -y 4 -z 0.05" />
+      <arg name="robot_name"  value="Robot2" />
+    <param name="amcl/initial_pose_x" value="9" />
+    <param name="amcl/initial_pose_y" value="4" />
+    </include>
+  </group>
+
+
+
+
+ <!-- <group ns="robot1">
+    <param name="tf_prefix" value="robot1_tf" />
+    <param name="amcl/initial_pose_x" value="9" />
+    <param name="amcl/initial_pose_y" value="5" />
+    <include file="$(find angen_turtlebot)/launch/nav_final.launch" />
+  </group>
+-->
+
+</launch>

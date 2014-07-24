@@ -1,0 +1,19 @@
+<model:physical name="floor">
+  <xyz>0 0 0</xyz>                       <!-- position of the whole model-->
+  <rpy>0 0 0</rpy>                         <!-- orientation of the whole model-->
+  <static>true</static>		           <!-- fixed, unmovable model-->
+  <body:box name="floor_1">         <!-- a model can one or multiple bodies -->
+    <xyz>3.5 4.25 0</xyz>                       <!-- position of the body ***relative to its parent*** -->
+    <rpy>0 0 0</rpy>
+    <geom:box name="floor1_geom">       <!-- each body can have one or multiple geoms -->
+      <xyz>3.5 4.25 0</xyz>		           <!-- positon of the geom ***relative to the parent body*** -->
+      <size>7 8.5 0.1</size>		           <!-- size of the geom. here: radius of sphere -->
+      <mass>1</mass>                       
+      <visual>                             <!-- each geom can have visuals attached -->
+        <size>7 8.5 0.1</size>           <!-- size of the visual per axes XYZ -->
+        <material>Gazebo/WoodFloor</material>  <!-- material (color, texture) of the visual -->
+        <mesh>unit_box</mesh>           <!-- the mesh used for the visual -->
+      </visual>
+    </geom:box>
+  </body:box>
+</model:physical>

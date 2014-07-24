@@ -1,0 +1,7 @@
+<launch>
+  <node name="current_pose_publisher" pkg="robot_navigation" type="current_pose_publisher" respawn="true" output="screen" cwd="node"/>
+  <node name="key_based_nav" pkg="robot_navigation" type="key_based_nav" respawn="true" output="screen" cwd="node"/>
+  <node name="circle" pkg="robot_navigation" type="circle" respawn="true" output="screen" cwd="node"/>
+  <node name="track_user" pkg="robot_navigation" type="track_user" respawn="true" output="screen" cwd="node"/>
+  <node name="read_user_pose" pkg="robot_navigation" type="read_user_pose" respawn="true" output="screen" cwd="node"/>
+</launch>

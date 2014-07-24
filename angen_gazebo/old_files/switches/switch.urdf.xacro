@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:gazebo="http://playerstage.sourceforge.net/gazebo/xmlschema/#gz" xmlns:model="http://playerstage.sourceforge.net/gazebo/xmlschema/#model" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:body="http://playerstage.sourceforge.net/gazebo/xmlschema/#body" xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom" xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#joint" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" xmlns:rendering="http://playerstage.sourceforge.net/gazebo/xmlschema/#rendering" xmlns:renderable="http://playerstage.sourceforge.net/gazebo/xmlschema/#renderable" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:physics="http://playerstage.sourceforge.net/gazebo/xmlschema/#physics" name="switch">
+    <xacro:property name="robotname" value="test_switch" />
+    <xacro:macro name="default_inertial" params="mass">
+        <inertial>
+            <mass value="${mass}" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+    </xacro:macro>
+    <!-- Links -->
+    <link name="${robotname}_link1">
+        <xacro:default_inertial mass="0.01" />
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.005 0.03 0.03" />
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.005 0.03 0.03" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="${robotname}_link2">
+        <xacro:default_inertial mass="0.01" />
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.005 0.03 0.03" />
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.005 0.03 0.03" />
+            </geometry>
+        </collision>
+    </link>
+    <!-- Joints -->
+    <joint name="${robotname}_joint" type="fixed">
+        <origin xyz="0.05 0 0" rpy="0 0 0" />
+        <parent link="${robotname}_link1" />
+        <child link="${robotname}_link2" />
+    </joint>
+    <gazebo reference="${robotname}_link">
+        <sensor:ray name="${robotname}_link">
+            <resRange>1</resRange>
+            <rayCount>2</rayCount>
+            <rangeCount>2</rangeCount>
+            <laserCount>1</laserCount>
+            <origin>0.0 0.0 0.0</origin>
+            <displayRays>true</displayRays>
+            <minAngle>-0.0</minAngle>
+            <maxAngle>0.0</maxAngle>
+            <minRange>0.0</minRange>
+            <maxRange>0.5</maxRange>
+            <updateRate>2.0</updateRate>
+            <horizontalRayCount>2</horizontalRayCount>
+            <horizontalRangeCount>2</horizontalRangeCount>
+            <horizontalMinAngle>-0.0</horizontalMinAngle>
+            <horizontalMaxAngle>0.0</horizontalMaxAngle>
+            <controller:gazebo_ros_laser name="gazebo_ros_base_laser_link_controller" plugin="libgazebo_ros_laser.so">
+                <gaussianNoise>0.005</gaussianNoise>
+                <alwaysOn>true</alwaysOn>
+                <updateRate>2.0</updateRate>
+                <topicName>${robotname}_ray</topicName>
+                <frameName>${robotname}_link</frameName>
+                <interface:laser name="gazebo_ros_base_laser_workroom_iface" />
+            </controller:gazebo_ros_laser>
+        </sensor:ray>
+        <material>Gazebo/Blue</material>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <gazebo reference="${robotname}_link1">
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+</robot>

@@ -1,0 +1,26 @@
+<?xml version ='1.0'?>
+
+<launch>
+  <param name="/use_sim_time" value="true" />
+
+  <node launch-prefix="optirun" name="gazebo" pkg="gazebo" type="gazebo" args="$(find gazebo_worlds)/worlds/empty.world" respawn="false" output="screen"/>
+  <node name="gazebo_gui" pkg="gazebo" type="gui" />
+   
+  <rosparam command="load" file="$(find angen_gazebo)/config/angen_gazebo.yaml" />
+   
+  <group ns="robot1">
+    <param name="tf_prefix" value="robot1_tf" />
+    <include file="$(find angen_turtlebot)/launch/turtlebot_1.launch" >
+      <arg name="init_pose" value="-x 4 -y 0 -z 0.06" />
+      <arg name="robot_name"  value="Robot1" />
+    </include>
+  </group>
+
+  <group ns="robot2">
+    <param name="tf_prefix" value="robot2_tf" />
+    <include file="$(find angen_turtlebot)/launch/turtlebot_1.launch" >
+      <arg name="init_pose" value="-x 4 -y -1 -z 0.06" />
+      <arg name="robot_name"  value="Robot2" />
+    </include>
+  </group>
+</launch>
